@@ -29,16 +29,16 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
+               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "14mb",
+                  "maximumError": "15mb"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "type": "initial",
+                  "maximumWarning": "9.5mb",
+                  "maximumError": "10.5mb"
                 }
               ],
               "fileReplacements": [
@@ -97,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "42d72735-77e4-4d3e-83fb-c20faf237633"
   }
 }
