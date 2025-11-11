@@ -103,8 +103,8 @@
 
 .form-input::placeholder {
   color: var(--vcm-gray-400);
+  opacity: 0.6;
 }
-
 
 .form-options {
   display: flex;
@@ -215,4 +215,22 @@
 
 .sso-button:hover {
   background-color: var(--vcm-gray-50);
+}
+
+.error-message {
+  color: #D93025;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+
+.form-input.invalid-input {
+  border-color: #D93025;
+}
+
+
+.form-input.invalid-input:focus {
+  border-color: #D93025;
+  box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.3);
 }

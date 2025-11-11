@@ -8,7 +8,7 @@
       <p>Acesse sua conta para continuar</p>
     </div>
 
-    <form (ngSubmit)="handleSubmit()" class="login-form">
+    <form (ngSubmit)="handleSubmit(loginForm)" #loginForm="ngForm" class="login-form" novalidate>
       
       <div class="form-field">
         <label for="email">E-mail</label>
@@ -20,7 +20,16 @@
           placeholder="seu@email.com"
           class="form-input"
           required
+          email
+          pattern="[a-zA-Z0-9._%+-]+@gmail\.com$"
+          #emailInput="ngModel"
+          [class.invalid-input]="emailInput.invalid && (emailInput.touched || loginForm.submitted)"
         />
+        <div *ngIf="emailInput.invalid && (emailInput.touched || loginForm.submitted)" class="error-message">
+          <div *ngIf="emailInput.errors?.['required']">E-mail é obrigatório.</div>
+          <div *ngIf="emailInput.errors?.['email']">Formato de e-mail inválido.</div>
+          <div *ngIf="emailInput.errors?.['pattern']">O e-mail deve ser @gmail.com</div>
+        </div>
       </div>
 
       <div class="form-field">
@@ -33,7 +42,14 @@
           placeholder="••••••••"
           class="form-input"
           required
+          minlength="4"
+          #passwordInput="ngModel"
+          [class.invalid-input]="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)"
         />
+        <div *ngIf="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)" class="error-message">
+          <div *ngIf="passwordInput.errors?.['required']">Senha é obrigatória.</div>
+          <div *ngIf="passwordInput.errors?.['minlength']">A senha deve ter pelo menos 4 caracteres.</div>
+        </div>
       </div>
 
       <div class="form-options">
