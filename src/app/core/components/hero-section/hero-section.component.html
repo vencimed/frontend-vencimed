@@ -1,0 +1,90 @@
+<!-- HERO: produtos próximos ao vencimento -->
+<section class="hero-marketplace">
+  <div class="container hero-layout">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        Encontre ofertas de remédios<br />
+        próximos ao vencimento
+      </h1>
+      <p class="hero-subtitle">
+        Mesma qualidade, melhor preço. Filtre por Categoria, Tipo ou Validade.
+      </p>
+
+      <!-- Card de busca -->
+      <div class="hero-search-card">
+        <div class="hero-search-row">
+          <div class="hero-input-wrapper">
+            <span class="hero-input-icon">
+              <lucide-icon name="search" [size]="18"></lucide-icon>
+            </span>
+            <input
+              type="text"
+              class="hero-input"
+              placeholder="Buscar por nome do produto..."
+            />
+          </div>
+
+          <select class="hero-select">
+            <option value="">Todos os estados</option>
+            <option value="CE">Ceará</option>
+            <option value="SP">São Paulo</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="MG">Minas Gerais</option>
+            <!-- ajuste os estados que quiser -->
+          </select>
+
+          <button class="hero-search-button">
+            Buscar
+          </button>
+        </div>
+
+        <!-- categorias rápidas dentro do hero -->
+        <div class="hero-quick-filters">
+          <button class="hero-chip">
+            <span class="hero-chip-icon"></span> Analgésicos
+          </button>
+          <button class="hero-chip"> Antitérmicos</button>
+          <button class="hero-chip"> Anti-inflamatórios</button>
+          <button class="hero-chip"> Antialérgicos</button>
+          <button class="hero-chip">Antibióticos</button>
+          <button class="hero-chip">Antiácidos</button>
+           <button class="hero-chip">Pediátricos</button>
+            <button class="hero-chip">Dermatológicos</button>
+             <button class="hero-chip">Fitoterápicos</button>
+              <button class="hero-chip">Ginecológicos</button>
+               <button class="hero-chip">Outros</button>
+  
+        </div>
+      </div>
+
+      <!-- Faixa verde com 30 / 60 / 90 dias + SELECT novo -->
+      <div class="hero-expiry-banner">
+        <div class="hero-expiry-text">
+          <strong>Economize comprando com antecedência</strong>
+          <span>Veja produtos próximos do vencimento e com grandes descontos.</span>
+        </div>
+
+        <div class="hero-expiry-actions">
+          <!-- botões 30 / 60 / 90 dias -->
+          <div class="expiry-chips">
+            <button class="expiry-chip">30 dias</button>
+            <button class="expiry-chip">60 dias</button>
+            <button class="expiry-chip">90 dias</button>
+          </div>
+
+          <!-- SELECT pedido ao lado dos botões -->
+          <select class="expiry-select">
+            <option value="">Filtrar por validade</option>
+            <option value="ate30">Até 30 dias</option>
+            <option value="30a60">De 30 a 60 dias</option>
+            <option value="acima60">Acima de 60 dias</option>
+          </select>
+
+          <button class="hero-expiry-cta">
+            Ver ofertas
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

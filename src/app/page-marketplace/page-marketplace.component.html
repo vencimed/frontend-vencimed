@@ -1,0 +1,86 @@
+<app-hero-section></app-hero-section>
+
+<div class="category-bar">
+  <div class="container">
+    <div class="category-scroll">
+      
+      <app-category-chip
+        *ngFor="let category of categories"
+        [label]="category"
+        [selected]="selectedCategory === category"
+        (clicked)="selectCategory(category)">
+      </app-category-chip>
+      
+    </div>
+  </div>
+</div>
+
+<main class="container main-content">
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Mais comprados</h2>
+      <div class="section-controls">
+        <button class="control-button">
+          <lucide-icon name="chevron-left" [size]="20"></lucide-icon>
+        </button>
+        <button class="control-button">
+          <lucide-icon name="chevron-right" [size]="20"></lucide-icon>
+        </button>
+      </div>
+    </div>
+    
+    <div class="product-grid">
+      <app-product-card
+        *ngFor="let product of filteredProducts.slice(0, 4)"
+        [id]="product.id"
+        [name]="product.name"
+        [brand]="product.brand"
+        [image]="product.image"
+        [originalPrice]="product.originalPrice"
+        [discountPrice]="product.discountPrice"
+        [expiryDays]="product.expiryDays"
+        [stock]="product.stock"
+        [rating]="product.rating"
+        (addToCart)="onAddToCart($event)">
+      </app-product-card>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Melhores descontos</h2>
+      <div class="section-controls">
+        <button class="control-button">
+          <lucide-icon name="chevron-left" [size]="20"></lucide-icon>
+        </button>
+        <button class="control-button">
+          <lucide-icon name="chevron-right" [size]="20"></lucide-icon>
+        </button>
+      </div>
+    </div>
+    
+    <div class="product-grid">
+      <app-product-card
+        *ngFor="let product of filteredProducts.slice(4, 8)"
+        [id]="product.id"
+        [name]="product.name"
+        [brand]="product.brand"
+        [image]="product.image"
+        [originalPrice]="product.originalPrice"
+        [discountPrice]="product.discountPrice"
+        [expiryDays]="product.expiryDays"
+        [stock]="product.stock"
+        [rating]="product.rating"
+        (addToCart)="onAddToCart($event)">
+      </app-product-card>
+    </div>
+  </section>
+
+  <div class="pagination">
+    <button class="pagination-button">Anterior</button>
+    <button class="pagination-button active">1</button>
+    <button class="pagination-button">2</button>
+    <button class="pagination-button">3</button>
+    <button class="pagination-button">Próximo</button>
+  </div>
+</main>

@@ -1,0 +1,71 @@
+<nav class="navbar-sticky">
+  <div class="top-stripe"></div>
+
+  <div class="navbar-container">
+    <div class="navbar-content">
+
+      <!-- Logo -->
+      <div class="logo-wrapper">
+        <div class="logo-icon-bg" aria-hidden="true">
+          <span>V</span>
+        </div>
+        <span class="logo-text">VCM Pharma</span>
+      </div>
+
+      <div class="search-desktop">
+        <div class="search-container">
+          <lucide-icon name="search" class="search-icon" aria-hidden="true"></lucide-icon>
+          <input
+            type="text"
+            placeholder="O que você procura?"
+            (input)="onSearchChange($event)"
+            class="search-input"
+            aria-label="Pesquisar"
+          />
+        </div>
+      </div>
+
+      <!-- Ações -->
+      <div class="actions-wrapper">
+
+        <button class="profile-desktop" type="button">
+          <lucide-icon name="user" [size]="20" aria-hidden="true"></lucide-icon>
+          <div class="profile-text" aria-hidden="true">
+            <p>Olá, Bem-vindo!</p>
+            <p class="profile-login">Entrar</p>
+          </div>
+        </button>
+
+        <button class="profile-mobile" type="button" aria-label="Entrar">
+          <lucide-icon name="user" [size]="24"></lucide-icon>
+        </button>
+
+        <button (click)="onCartClick()" class="cart-button" type="button" aria-label="Minha Cesta">
+          <div class="cart-icon-wrapper">
+            <lucide-icon name="shopping-cart" [size]="24" aria-hidden="true"></lucide-icon>
+            <ng-container *ngIf="(cartItemCount$ | async) as count">
+              <span *ngIf="count > 0" class="cart-badge">
+                {{ count > 9 ? '9+' : count }}
+              </span>
+            </ng-container>
+          </div>
+          <span class="cart-text">Minha Cesta</span>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="search-mobile">
+      <div class="search-container">
+        <lucide-icon name="search" class="search-icon-mobile" aria-hidden="true"></lucide-icon>
+        <input
+          type="text"
+          placeholder="O que você procura?"
+          (input)="onSearchChange($event)"
+          class="search-input-mobile"
+          aria-label="Pesquisar"
+        />
+      </div>
+    </div>
+  </div>
+</nav>
