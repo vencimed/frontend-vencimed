@@ -19,6 +19,19 @@
   box-sizing: border-box;
 }
 
+.login-page-container {
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box; 
+  padding: 0 1rem;
+}
+
+@media (min-width: 600px) {
+  .login-page-container {
+    padding: 0;
+  }
+}
+
 .login-header {
   margin-bottom: 2rem;
 }
