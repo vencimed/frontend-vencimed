@@ -1,1 +1,72 @@
-<p>login works!</p>
+<div class="login-page-container">
+  <div class="login-card">
+    <div class="login-header">
+      <button (click)="handleBackClick()" class="back-button">
+        ← Voltar ao marketplace
+      </button>
+      <h1>Entrar</h1>
+      <p>Acesse sua conta para continuar</p>
+    </div>
+
+    <form (ngSubmit)="handleSubmit()" class="login-form">
+      
+      <div class="form-field">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="seu@email.com"
+          class="form-input"
+          required
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="password">Senha</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="••••••••"
+          class="form-input"
+          required
+        />
+      </div>
+
+      <div class="form-options">
+        <div class="remember-me">
+          <input
+            type="checkbox"
+            id="remember"
+            [(ngModel)]="rememberMe"
+            name="rememberMe"
+            class="form-checkbox"
+          />
+          <label for="remember" class="checkbox-label">
+            Lembrar de mim
+          </label>
+        </div>
+        <button type="button" class="forgot-password-button">
+          Esqueci minha senha
+        </button>
+      </div>
+
+      <button type="submit" class="submit-button">
+        Entrar
+      </button>
+
+      <div class="form-separator">
+        <div class="separator-line"></div>
+        <span class="separator-text">ou entre com</span>
+      </div>
+
+      <button type="button" class="sso-button">
+        SSO / OAuth
+      </button>
+
+    </form>
+  </div>
+</div>
