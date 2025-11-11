@@ -6,6 +6,15 @@ import { ClienteDashboardComponent } from './dashboards/cliente-dashboard/client
 import { AdminDashboardComponent } from './dashboards/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: 'admin-dashboard', component: AdminDashboardComponent },
+      { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' }, 
+      { path: '**', redirectTo: 'admin-dashboard' }                   
+    ]
+  },
+  { path: 'admin-dashboard', component: AdminDashboardComponent }
 
 ];
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// 1. IMPORTAR OS TIPOS DE GRÁFICO
+
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -13,7 +13,7 @@ import {
   ApexResponsive
 } from 'ng-apexcharts';
 
-// Tipos para os nossos gráficos
+
 export type SalesChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -34,7 +34,7 @@ export type CategoryChartOptions = {
   responsive: ApexResponsive[];
 };
 
-// --- Tipos de Dados (já os tinhas) ---
+
 type Trend = 'up' | 'down' | 'warning';
 type IntegrationStatus = 'online' | 'unstable';
 type ExpiringStatus = 'critical' | 'warning';
@@ -81,10 +81,7 @@ interface ExpiringProduct {
 })
 export class AdminDashboardComponent implements OnInit {
 
-  // ==========================================================
-  // PASSO 1: MOVER OS DADOS "MOCK" PARA CIMA
-  // ==========================================================
-  
+
   sidebarItems: SidebarItem[] = [
     { label: 'Dashboard', icon: 'layout-dashboard', active: true },
     { label: 'Produtos', icon: 'package' },
@@ -134,20 +131,13 @@ export class AdminDashboardComponent implements OnInit {
   ];
 
   filterPeriod: '7days' | '30days' = '7days';
-
-  // ==========================================================
-  // PASSO 2: AS OPÇÕES DO GRÁFICO (podem ficar aqui)
-  // ==========================================================
   
   public salesChartOptions: Partial<SalesChartOptions>;
   public categoryChartOptions: Partial<CategoryChartOptions>;
 
-  // ==========================================================
-  // PASSO 3: O CONSTRUCTOR (agora pode ler os dados)
-  // ==========================================================
   
   constructor() {
-    // Agora this.salesData e this.categoryData existem!
+    
     
     this.salesChartOptions = {
       series: [
@@ -156,7 +146,7 @@ export class AdminDashboardComponent implements OnInit {
           data: this.salesData.map(d => d.vendas) 
         }
       ],
-      chart: { type: "bar", height: 220, toolbar: { show: false } }, // Ajustei a altura
+      chart: { type: "bar", height: 220, toolbar: { show: false } }, 
       plotOptions: { bar: { borderRadius: 8, horizontal: false } },
       dataLabels: { enabled: false },
       xaxis: {
@@ -171,13 +161,13 @@ export class AdminDashboardComponent implements OnInit {
 
     this.categoryChartOptions = {
       series: this.categoryData.map(d => d.value), 
-      chart: { type: "donut", height: 250 }, // Ajustei a altura
+      chart: { type: "donut", height: 250 }, 
       labels: this.categoryData.map(d => d.name), 
       colors: this.categoryData.map(d => d.color), 
       dataLabels: { 
-        enabled: false // Vamos usar a tua legenda CSS original
+        enabled: false 
       }, 
-      legend: { show: false }, // Esconde a legenda do Apex
+      legend: { show: false }, 
       responsive: [{
         breakpoint: 480,
         options: { chart: { width: 200 } }
@@ -187,10 +177,6 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // ==========================================================
-  // PASSO 4: O RESTO DAS FUNÇÕES (já estavam corretas)
-  // ==========================================================
   
   setFilterPeriod(period: '7days' | '30days') {
     this.filterPeriod = period;
