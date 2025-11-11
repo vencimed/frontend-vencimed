@@ -1,102 +1,48 @@
-/*
-  Este é o CSS que recria as classes Tailwind
-  que estavam no hero-section.tsx.
-*/
 :host {
   display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: var(--navbar-total-height);
 }
 
-.hero-bg {
-  position: relative;
-  /* bg-gradient-to-b from-vcm-primary-800 to-vcm-primary-700 */
-  background-image: linear-gradient(to bottom, var(--vcm-primary-800), var(--vcm-primary-700));
-  padding-top: 3rem;    /* py-12 */
-  padding-bottom: 3rem;
-}
 
-@media (min-width: 768px) {
-  .hero-bg {
-    padding-top: 4rem;    /* md:py-16 */
-    padding-bottom: 4rem;
-  }
-}
-
-.container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;  /* px-4 */
-  padding-right: 1rem;
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding-left: 2rem;  /* md:px-8 */
-    padding-right: 2rem;
-  }
-}
-
-.content-wrapper {
-  max-width: 48rem; /* max-w-3xl */
-}
-
-.hero-title {
-  color: white;
-  font-size: 1.875rem; /* text-3xl */
-  line-height: 2.25rem;
-  margin-bottom: 1rem; /* mb-4 */
-  margin-top: 0;
-  font-weight: 600;
-}
-
-.hero-subtitle {
-  color: var(--vcm-primary-100);
-  font-size: 1rem; /* text-base */
-  line-height: 1.5rem;
-  margin: 0;
-}
-
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: 2.25rem; /* md:text-4xl */
-    line-height: 2.5rem;
-  }
-  .hero-subtitle {
-    font-size: 1.125rem; /* md:text-lg */
-    line-height: 1.75rem;
-  }
-}
-
-/* === HERO ajustes para ficar como o React === */
 .hero-bg {
   background: linear-gradient(135deg, var(--vcm-primary-800), var(--vcm-primary-600));
   color: #fff;
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+
 @media (min-width: 1024px) {
-  .hero-bg { padding-top: 4rem; padding-bottom: 4rem; }
+  .hero-bg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
+
+
+
 .content-wrapper {
   max-width: 1024px;
-  margin: 0 auto;
 }
+
 .hero-title {
+  color: white;
   font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 0.75rem;
 }
-@media (min-width: 1024px) { .hero-title { font-size: 2.5rem; } }
+
 .hero-subtitle {
+  color: var(--vcm-primary-100);
   font-size: 1rem;
   opacity: 0.9;
+  margin: 0;
 }
-/* separador suave abaixo do hero */
-.hero-bg::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: rgba(0,0,0,0.06);
-  margin-top: 2rem;
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
 }

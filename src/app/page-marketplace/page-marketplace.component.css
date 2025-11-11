@@ -1,4 +1,4 @@
-/* === Layout container (igual ao React) === */
+
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -7,15 +7,7 @@
   padding-right: 1rem;
 }
 
-/* === Barra de categorias === */
-.category-bar {
-  background: #fff;
-  border-bottom: 1px solid var(--vcm-gray-200);
-}
-.category-bar .container {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
+
 .category-scroll {
   display: flex;
   gap: .5rem;
@@ -23,7 +15,7 @@
   scrollbar-width: thin;
 }
 
-/* === Seções e controles (setas) === */
+
 .section { margin-top: 2rem; }
 .section-header {
   display: flex;
@@ -48,17 +40,17 @@
 }
 .control-button:hover { border-color: var(--vcm-gray-400); }
 
-/* === Grade de produtos (responsiva) === */
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem; /* 20px */
+  gap: 1.25rem;
 }
 @media (min-width: 1024px) {
   .product-grid { gap: 1.5rem; }
 }
 
-/* === Paginação (pills) === */
+
 .pagination {
   display: flex;
   gap: .5rem;
@@ -81,3 +73,22 @@
   color: #fff;
 }
 .pagination-button:hover { border-color: var(--vcm-gray-400); }
+
+
+
+
+.category-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--vcm-gray-200);
+  position: sticky;
+  z-index: 99;
+  width: 100%;
+  
+  top: var(--navbar-total-height);
+}
+
+.category-bar .container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
