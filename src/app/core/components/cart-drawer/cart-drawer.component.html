@@ -1,0 +1,85 @@
+<div class="drawer-content">
+  
+  <div class="drawer-header">
+    <div class="header-title-wrapper">
+      <h2 class="header-title">Cesta</h2>
+      <ng-container *ngIf="(totalItems$ | async) as total">
+        <span *ngIf="total > 0" class="header-badge">
+          {{ total }} {{ total === 1 ? 'item' : 'itens' }}
+        </span>
+      </ng-container>
+    </div>
+    <button (click)="onClose()" class="close-button">
+      <lucide-icon name="x" [size]="20"></lucide-icon>
+    </button>
+  </div>
+
+  <div class="drawer-body">
+    
+    <div *ngIf="isEmpty; else itemsList" class="empty-state">
+      <div class="empty-icon-wrapper">
+        <lucide-icon name="shopping-cart" class="empty-icon"></lucide-icon>
+      </div>
+      <h3 class="empty-title">Sua cesta está vazia</h3>
+      <p class="empty-subtitle">
+        Que tal aproveitar nossas ofertas do dia?
+      </p>
+      <button (click)="onClose()" class="continue-button outline">
+        Continuar comprando
+      </button>
+    </div>
+
+    <ng-template #itemsList>
+      <div *ngIf="(cartItems$ | async) as items" class="items-list">
+        
+        <div *ngFor="let item of items" class="item-card">
+          <div class="item-image-wrapper">
+            <img [src]="item.image" [alt]="item.name" class="item-image" />
+          </div>
+
+          <div class="item-info">
+            <p class="item-brand">{{ item.brand }}</p>
+            <h4 class="item-name">{{ item.name }}</h4>
+            <div class="item-price-wrapper">
+              <span class="item-price-discount">R$ {{ item.discountPrice.toFixed(2) }}</span>
+              <span class="item-price-original">R$ {{ item.originalPrice.toFixed(2) }}</span>
+            </div>
+          </div>
+
+          <div class="item-actions">
+            <button (click)="onRemoveItem(item.id)" class="remove-button">
+              <lucide-icon name="trash-2" [size]="16"></lucide-icon>
+            </button>
+            
+            <mat-select 
+              [value]="item.quantity" 
+              (selectionChange)="onUpdateQuantity(item.id, $event)" 
+              class="quantity-select">
+              <mat-option *ngFor="let num of quantityOptions" [value]="num">
+                {{ num }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+        
+      </div>
+    </ng-template>
+  </div>
+
+  <div *ngIf="!isEmpty" class="drawer-footer">
+    <div class="subtotal-wrapper">
+      <span>Subtotal</span>
+      <span *ngIf="(subtotal$ | async) as subtotal" class="subtotal-price">
+        R$ {{ subtotal.toFixed(2) }}
+      </span>
+    </div>
+    <div class="footer-buttons">
+      <button (click)="onGoToCart()" class="continue-button primary">
+        Ir para cesta
+      </button>
+      <button (click)="onClose()" class="continue-button outline">
+        Continuar comprando
+      </button>
+    </div>
+  </div>
+</div>

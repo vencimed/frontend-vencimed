@@ -1,7 +1,5 @@
 <div class="admin-layout">
-  <!-- Sidebar -->
   <aside class="admin-sidebar">
-    <!-- Logo -->
     <div class="sidebar-header">
       <div class="sidebar-logo-icon">
         <span>V</span>
@@ -12,19 +10,17 @@
       </div>
     </div>
 
-    <!-- Navegação -->
     <nav class="sidebar-nav">
       <button
         *ngFor="let item of sidebarItems"
         class="sidebar-item"
         [ngClass]="{ 'sidebar-item--active': item.active }"
       >
-        <span class="sidebar-item__icon">{{ item.icon }}</span>
+        <lucide-icon [name]="item.icon" class="sidebar-item__icon"></lucide-icon>
         <span class="sidebar-item__label">{{ item.label }}</span>
       </button>
     </nav>
 
-    <!-- Usuário -->
     <div class="sidebar-user">
       <div class="sidebar-user-avatar">AD</div>
       <div class="sidebar-user-info">
@@ -34,9 +30,7 @@
     </div>
   </aside>
 
-  <!-- Main -->
   <div class="admin-main">
-    <!-- Topbar -->
     <header class="admin-topbar">
       <div>
         <h2>Dashboard</h2>
@@ -47,17 +41,12 @@
       </div>
     </header>
 
-    <!-- Conteúdo -->
     <main class="admin-content">
-      <!-- Cards métricas -->
       <section class="metrics-grid">
-        <article
-          *ngFor="let metric of metrics"
-          class="metric-card"
-        >
+        <article *ngFor="let metric of metrics" class="metric-card">
           <div class="metric-card-header">
             <div class="metric-icon-wrapper">
-              <span class="metric-icon">{{ metric.icon }}</span>
+              <lucide-icon [name]="metric.icon" class="metric-icon"></lucide-icon>
             </div>
             <span
               class="metric-badge"
@@ -75,53 +64,41 @@
         </article>
       </section>
 
-      <!-- Linha de gráficos -->
       <section class="charts-row">
-        <!-- Gráfico de vendas (fake bar chart com divs) -->
+        
         <article class="chart-card chart-card--wide">
           <h3>Vendas Mensais</h3>
-
-          <div class="bar-chart">
-            <div
-              class="bar-chart-item"
-              *ngFor="let point of salesData"
-            >
-              <div
-                class="bar-chart-bar"
-                [style.height.%]="barHeight(point.vendas)"
-              ></div>
-              <span class="bar-chart-label">{{ point.name }}</span>
-            </div>
+          <div id="salesChart">
+            <apx-chart
+              [series]="salesChartOptions.series!"
+              [chart]="salesChartOptions.chart!"
+              [xaxis]="salesChartOptions.xaxis!"
+              [yaxis]="salesChartOptions.yaxis!"
+              [tooltip]="salesChartOptions.tooltip!"
+              [plotOptions]="salesChartOptions.plotOptions!"
+              [dataLabels]="salesChartOptions.dataLabels!"
+            ></apx-chart>
           </div>
         </article>
 
-        <!-- Gráfico de pizza simples -->
         <article class="chart-card">
           <h3>Por Categoria</h3>
-
-          <div class="pie-chart">
-            <div class="pie-chart-legend">
-              <div
-                class="pie-chart-legend-item"
-                *ngFor="let cat of categoryData"
-              >
-                <span
-                  class="legend-color"
-                  [style.background-color]="cat.color"
-                ></span>
-                <span class="legend-label">
-                  {{ cat.name }} – {{ cat.value }}%
-                </span>
-              </div>
-            </div>
+          <div id="categoryChart">
+            <apx-chart
+              [series]="categoryChartOptions.series!"
+              [chart]="categoryChartOptions.chart!"
+              [labels]="categoryChartOptions.labels!"
+              [colors]="categoryChartOptions.colors!"
+              [dataLabels]="categoryChartOptions.dataLabels!"
+              [legend]="categoryChartOptions.legend!"
+              [responsive]="categoryChartOptions.responsive!"
+            ></apx-chart>
           </div>
         </article>
       </section>
 
-      <!-- Status de integrações -->
       <section class="card integrations-card">
         <h3>Status de Integrações</h3>
-
         <div class="integrations-grid">
           <div
             class="integration-item"
@@ -143,13 +120,11 @@
         </div>
       </section>
 
-      <!-- Tabela de produtos próximos ao vencimento -->
       <section class="card">
         <div class="expiring-header">
           <div>
             <h3>Produtos Próximos ao Vencimento</h3>
           </div>
-
           <div class="expiring-actions">
             <div class="expiring-toggle">
               <button
@@ -167,9 +142,8 @@
                 Até 30 dias
               </button>
             </div>
-
             <button class="export-btn">
-              ⬇ Exportar CSV
+              <lucide-icon name="download" [size]="14"></lucide-icon> Exportar CSV
             </button>
           </div>
         </div>

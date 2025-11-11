@@ -1,0 +1,73 @@
+<div class="product-card" [ngClass]="{ 'hover': isHovered }">
+  
+  <div class="image-container">
+    <img [src]="image" [alt]="name" class="product-image" />
+    
+    <button (click)="handleAdd()" class="mobile-add-button">
+      <lucide-icon name="plus" [size]="20"></lucide-icon>
+    </button>
+    
+    <div class="expiry-badge">
+      <lucide-icon name="clock" class="expiry-icon"></lucide-icon>
+      <span class="expiry-text">Vence em {{ expiryDays }} dias</span>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div>
+      <p class="brand">{{ brand }}</p>
+      <h3 class="name">{{ name }}</h3>
+    </div>
+
+    <div *ngIf="rating" class="rating-wrapper">
+      <span class="rating-star">★</span>
+      <span class="rating-text">{{ rating.toFixed(1) }}</span>
+    </div>
+
+    <div class="price-wrapper">
+      <div class="price-discount-wrapper">
+        <span class="discount-price">
+          R$ {{ discountPrice.toFixed(2) }}
+        </span>
+        <span class="discount-badge">
+          -{{ discount }}%
+        </span>
+      </div>
+      <p class="original-price">
+        R$ {{ originalPrice.toFixed(2) }}
+      </p>
+    </div>
+
+    <div class="stock-info">
+      <span>Validade {{ expiryDays }} dias</span>
+      <span>Estoque {{ stock }}</span>
+    </div>
+
+    <div class="desktop-actions">
+      <button 
+        *ngIf="quantity === 0" 
+        (click)="handleAdd()" 
+        class="add-button">
+        <lucide-icon name="plus" [size]="16"></lucide-icon>
+        Adicionar
+      </button>
+
+      <div *ngIf="quantity > 0" class="quantity-wrapper">
+        <div class="quantity-controls">
+          <button (click)="handleSubtract()" class="quantity-button">
+            <lucide-icon name="minus" [size]="16"></lucide-icon>
+          </button>
+          <span class="quantity-text">{{ quantity }}</span>
+          <button (click)="handleAdd()" class="quantity-button add">
+            <lucide-icon name="plus" [size]="16"></lucide-icon>
+          </button>
+        </div>
+        
+        <button *ngIf="isHovered" class="details-button">
+          <lucide-icon name="eye" [size]="16"></lucide-icon>
+          Ver detalhes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

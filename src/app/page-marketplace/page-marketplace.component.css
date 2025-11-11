@@ -1,0 +1,83 @@
+/* === Layout container (igual ao React) === */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* === Barra de categorias === */
+.category-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--vcm-gray-200);
+}
+.category-bar .container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.category-scroll {
+  display: flex;
+  gap: .5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+/* === Seções e controles (setas) === */
+.section { margin-top: 2rem; }
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.section-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.control-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 0.375rem;
+  border: 1px solid var(--vcm-gray-200);
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.control-button:hover { border-color: var(--vcm-gray-400); }
+
+/* === Grade de produtos (responsiva) === */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem; /* 20px */
+}
+@media (min-width: 1024px) {
+  .product-grid { gap: 1.5rem; }
+}
+
+/* === Paginação (pills) === */
+.pagination {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.pagination-button {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 .75rem;
+  border-radius: .5rem;
+  border: 1px solid var(--vcm-gray-200);
+  background: #fff;
+  cursor: pointer;
+}
+.pagination-button.active {
+  background: var(--vcm-primary-600);
+  border-color: var(--vcm-primary-600);
+  color: #fff;
+}
+.pagination-button:hover { border-color: var(--vcm-gray-400); }
