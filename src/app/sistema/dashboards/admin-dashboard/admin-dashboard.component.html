@@ -49,6 +49,15 @@
           <div class="chart-card">
             <h3 class="chart-title">Clientes por Estado</h3>
             <div class="simple-bar-chart">
+              <!-- Eixo Y -->
+              <div class="chart-y-axis">
+                <span class="y-axis-label">160</span>
+                <span class="y-axis-label">120</span>
+                <span class="y-axis-label">80</span>
+                <span class="y-axis-label">40</span>
+                <span class="y-axis-label">0</span>
+              </div>
+              
               <div class="bars-container">
                 <div *ngFor="let state of clientsByState" class="bar-item">
                   <div class="bar" [style.height]="getBarHeight(state.count)">

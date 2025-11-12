@@ -35,7 +35,7 @@ export class AdminDashboardComponent {
   activeMenuItem = 'dashboard';
   filterDays: 7 | 30 = 30;
 
-  // Dados mockados
+  
   clientsByState: StateData[] = [
     { state: 'SP', count: 145 },
     { state: 'RJ', count: 89 },
@@ -119,13 +119,12 @@ export class AdminDashboardComponent {
     console.log('Exportando CSV...');
   }
 
-  // Método auxiliar para calcular altura das barras
   getBarHeight(count: number): string {
-    const maxCount = Math.max(...this.clientsByState.map(s => s.count));
+    const maxCount = 160; 
     return (count / maxCount * 100) + '%';
   }
 
-  // Método auxiliar para calcular ângulos do gráfico de pizza
+  
   getPieChartBackground(): string {
     let currentAngle = 0;
     let background = '';
