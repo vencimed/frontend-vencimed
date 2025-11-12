@@ -1,0 +1,17 @@
+<aside class="navbar">
+  <div class="navbar-content">
+    <h2 class="logo">VenciMed</h2>
+
+    <nav class="nav">
+      <button
+        *ngFor="let item of menuItems"
+        (click)="onItemClick(item.id)"
+        [class.active]="item.id === activeItem"
+        class="nav-item"
+      >
+        <i class="icon icon-{{ item.icon }}"></i>
+        <span class="label">{{ item.label }}</span>
+      </button>
+    </nav>
+  </div>
+</aside>
