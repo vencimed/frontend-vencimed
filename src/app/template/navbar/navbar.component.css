@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 13;
+  z-index: 1000; 
   margin: 0;
   transition: padding 0.4s;
   background: var(--header-bg);
@@ -320,7 +320,7 @@
 
 .main-content {
   transition: margin-left 0.4s;
-  margin-top: 80px;
+  margin-top: 0px;
   background: #ffffff;
   min-height: calc(100vh - 80px);
 }
