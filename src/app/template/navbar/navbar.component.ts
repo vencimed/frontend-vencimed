@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 interface MenuItem {
   id: string;
@@ -15,6 +15,13 @@ export class NavbarComponent {
   @Input() activeItem: string = '';
   @Output() itemClick = new EventEmitter<string>();
 
+  isSidebarOpen = false;
+  isMobile = false;
+
+  
+  userName = 'Administrador';
+  userRole = 'Admin';
+
   menuItems: MenuItem[] = [
     { id: 'admin', label: 'Painel do Administrador', icon: 'user' },
     { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },
@@ -27,7 +34,33 @@ export class NavbarComponent {
     { id: 'settings', label: 'Configurações', icon: 'settings' }
   ];
 
+  ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 900;
+    if (!this.isMobile) {
+      this.isSidebarOpen = true; 
+    } else {
+      this.isSidebarOpen = false; 
+    }
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
   onItemClick(itemId: string): void {
     this.itemClick.emit(itemId);
+    
+    if (this.isMobile) {
+      this.isSidebarOpen = false;
+    }
   }
 }
