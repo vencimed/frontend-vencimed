@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
-
+import { Router } from '@angular/router';
 interface MenuItem {
   id: string;
   label: string;
@@ -12,15 +12,22 @@ interface MenuItem {
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+onNotificationsClick() {
+throw new Error('Method not implemented.');
+}
   @Input() activeItem: string = '';
   @Output() itemClick = new EventEmitter<string>();
+
+  constructor(private router: Router) {}
 
   isSidebarOpen = false;
   isMobile = false;
 
+  isProfileDropdownOpen = false;
+
   
   userName = 'Administrador';
-  userRole = 'Admin';
+  userRole = 'Administrador';
 
   menuItems: MenuItem[] = [
     { id: 'admin', label: 'Painel do Administrador', icon: 'user' },
@@ -54,6 +61,33 @@ export class NavbarComponent {
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+    toggleProfileDropdown(): void {
+    this.isProfileDropdownOpen = !this.isProfileDropdownOpen;
+  }
+
+  getUserInitial(): string {
+    return this.userName.charAt(0).toUpperCase();
+  }
+
+  onProfileClick(): void {
+    this.isProfileDropdownOpen = false;
+    
+    console.log('Perfil clicado');
+  }
+
+  onLogoutClick(): void {
+    this.router.navigate(['/marketplace']);
+  }
+
+
+  
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.user-profile') && !target.closest('.dropdown-menu')) {
+      this.isProfileDropdownOpen = false;
+    }
   }
 
   onItemClick(itemId: string): void {

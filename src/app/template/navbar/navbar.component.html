@@ -1,16 +1,33 @@
 <header class="header" [class.left-pd]="isSidebarOpen">
   <div class="header-container">
-    <button (click)="toggleSidebar()" class="header-toggle" id="header-toggle">
-      <img src="assets/icons/menu-icon.svg" alt="Menu" class="menu-icon">
-    </button>
+    <div class="header-left">
+      <button (click)="toggleSidebar()" class="header-toggle" id="header-toggle">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <h1 class="page-title">Dashboard</h1>
+    </div>
 
-    <div class="header-user">
-      <div class="usuario">
-        <div class="user-info">
-          <h3 class="user-name">{{ userName }}</h3>
-          <span class="user-cargo">{{ userRole }}</span>
-        </div>
+    <div class="header-right">
+      <button class="icon-btn" (click)="onNotificationsClick()">
+        <img src="/assets/icones/Bell.svg" alt="Perfil" class="icon-notifications"/>
+      </button>
+
+
+      <button class="icon-btn" (click)="onProfileClick()">
+        <img src="/assets/icones/profile.svg" alt="Perfil" class="icon-profile"/>
+      </button>
+
+      <div class="user-info-compact">
+        <span class="user-name">{{userName}}</span>
+        <span class="user-role">{{userRole}}</span>
       </div>
+      <button class="logout-btn" (click)="onLogoutClick()">
+        Sair
+      </button>
     </div>
   </div>
 </header>
