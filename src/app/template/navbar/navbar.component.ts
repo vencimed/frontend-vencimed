@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+
 interface MenuItem {
   id: string;
   label: string;
@@ -12,9 +13,10 @@ interface MenuItem {
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-onNotificationsClick() {
-throw new Error('Method not implemented.');
-}
+  onNotificationsClick() {
+    throw new Error('Method not implemented.');
+  }
+  
   @Input() activeItem: string = '';
   @Output() itemClick = new EventEmitter<string>();
 
@@ -22,9 +24,7 @@ throw new Error('Method not implemented.');
 
   isSidebarOpen = false;
   isMobile = false;
-
   isProfileDropdownOpen = false;
-
   
   userName = 'Administrador';
   userRole = 'Administrador';
@@ -43,6 +43,8 @@ throw new Error('Method not implemented.');
 
   ngOnInit() {
     this.checkScreenSize();
+    
+    this.initializeSidebarState();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -50,19 +52,35 @@ throw new Error('Method not implemented.');
     this.checkScreenSize();
   }
 
+  @HostListener('window:load', ['$event'])
+  onPageLoad(event: any) {
+    
+    this.initializeSidebarState();
+  }
+
   checkScreenSize() {
     this.isMobile = window.innerWidth < 900;
-    if (!this.isMobile) {
-      this.isSidebarOpen = true; 
-    } else {
-      this.isSidebarOpen = false; 
-    }
+  }
+
+  initializeSidebarState() {
+    
+    
+    this.isSidebarOpen = false;
+    
+    
+    
+    
   }
 
   toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
+    
+    if (this.isMobile) {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    }
+    
   }
-    toggleProfileDropdown(): void {
+
+  toggleProfileDropdown(): void {
     this.isProfileDropdownOpen = !this.isProfileDropdownOpen;
   }
 
@@ -72,7 +90,6 @@ throw new Error('Method not implemented.');
 
   onProfileClick(): void {
     this.isProfileDropdownOpen = false;
-    
     console.log('Perfil clicado');
   }
 
@@ -80,8 +97,6 @@ throw new Error('Method not implemented.');
     this.router.navigate(['/marketplace']);
   }
 
-
-  
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
