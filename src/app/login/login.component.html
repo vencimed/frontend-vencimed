@@ -1,1 +1,88 @@
-<p>login works!</p>
+<div class="login-page-container">
+  <div class="login-card">
+    <div class="login-header">
+      <button (click)="handleBackClick()" class="back-button">
+        ← Voltar ao marketplace
+      </button>
+      <h1>Entrar</h1>
+      <p>Acesse sua conta para continuar</p>
+    </div>
+
+    <form (ngSubmit)="handleSubmit(loginForm)" #loginForm="ngForm" class="login-form" novalidate>
+      
+      <div class="form-field">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="seu@email.com"
+          class="form-input"
+          required
+          email
+          pattern="[a-zA-Z0-9._%+-]+@gmail\.com$"
+          #emailInput="ngModel"
+          [class.invalid-input]="emailInput.invalid && (emailInput.touched || loginForm.submitted)"
+        />
+        <div *ngIf="emailInput.invalid && (emailInput.touched || loginForm.submitted)" class="error-message">
+          <div *ngIf="emailInput.errors?.['required']">E-mail é obrigatório.</div>
+          <div *ngIf="emailInput.errors?.['email']">Formato de e-mail inválido.</div>
+          <div *ngIf="emailInput.errors?.['pattern']">O e-mail deve ser @gmail.com</div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="password">Senha</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="••••••••"
+          class="form-input"
+          required
+          minlength="4"
+          #passwordInput="ngModel"
+          [class.invalid-input]="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)"
+        />
+        <div *ngIf="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)" class="error-message">
+          <div *ngIf="passwordInput.errors?.['required']">Senha é obrigatória.</div>
+          <div *ngIf="passwordInput.errors?.['minlength']">A senha deve ter pelo menos 4 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="form-options">
+        <div class="remember-me">
+          <input
+            type="checkbox"
+            id="remember"
+            [(ngModel)]="rememberMe"
+            name="rememberMe"
+            class="form-checkbox"
+          />
+          <label for="remember" class="checkbox-label">
+            Lembrar de mim
+          </label>
+        </div>
+        <button type="button" class="forgot-password-button">
+          Esqueci minha senha
+        </button>
+      </div>
+
+      <button type="submit" class="submit-button">
+        Entrar
+      </button>
+
+      <div class="form-separator">
+        <div class="separator-line"></div>
+        <span class="separator-text">ou entre com</span>
+      </div>
+
+      <button type="button" class="sso-button">
+        SSO / OAuth
+      </button>
+
+    </form>
+  </div>
+</div>

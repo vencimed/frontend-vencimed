@@ -173,3 +173,45 @@ html, body {
     padding-right: 2rem;
   }
 }
+
+/* globals.css - adaptado para Angular */
+:root {
+  --background: #ffffff;
+  --foreground: #030213;
+  --card: #ffffff;
+  --primary: #030213;
+  --secondary: #0e3a5a;
+  --primary-foreground: #ffffff;
+  --muted: #ececf0;
+  --vcm-primary-900: #0b2b47;
+  --vcm-primary-800: #0e3a5a;
+  --vcm-primary-100: #e6f4fa;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.sidebar {
+  background-color: var(--vcm-primary-900);
+  color: var(--primary-foreground);
+}
+
+.metric-card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.metric-trend-up {
+  color: #16A34A; /* Verde */
+}
+
+.metric-trend-down {
+  color: #d4183d; /* Vermelho */
+}
+
+.metric-trend-warning {
+  color: #f39c12; /* Amarelo */
+}

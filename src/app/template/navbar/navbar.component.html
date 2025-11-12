@@ -1,0 +1,61 @@
+<header class="header" [class.left-pd]="isSidebarOpen">
+  <div class="header-container">
+    <div class="header-left">
+      <button (click)="toggleSidebar()" class="header-toggle" id="header-toggle">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <h1 class="page-title">Dashboard</h1>
+    </div>
+
+    <div class="header-right">
+      <button class="icon-btn" (click)="onNotificationsClick()">
+        <img src="/assets/icones/Bell.svg" alt="Perfil" class="icon-notifications"/>
+      </button>
+
+
+      <button class="icon-btn" (click)="onProfileClick()">
+        <img src="/assets/icones/profile.svg" alt="Perfil" class="icon-profile"/>
+      </button>
+
+      <div class="user-info-compact">
+        <span class="user-name">{{userName}}</span>
+        <span class="user-role">{{userRole}}</span>
+      </div>
+      <button class="logout-btn" (click)="onLogoutClick()">
+        Sair
+      </button>
+    </div>
+  </div>
+</header>
+
+<aside class="navbar" [class.show-sidebar]="isSidebarOpen">
+  <div class="navbar-container">
+    <div class="navbar-content">
+      <h2 class="logo">VenciMed</h2>
+
+      <nav class="nav">
+        <button
+          *ngFor="let item of menuItems"
+          (click)="onItemClick(item.id)"
+          [class.active]="item.id === activeItem"
+          class="nav-item"
+        >
+          <div [class]="'nav-icon icon-' + item.icon"></div>
+          <span class="label">{{ item.label }}</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+</aside>
+
+<div class="overlay" [class.show]="isSidebarOpen" (click)="toggleSidebar()"></div>
+
+<main class="main-content" [class.shifted]="isSidebarOpen">
+  <div class="content-area">
+    <router-outlet></router-outlet>
+  </div>
+</main>

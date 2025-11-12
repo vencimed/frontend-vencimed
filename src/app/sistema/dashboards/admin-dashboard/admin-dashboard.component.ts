@@ -1,202 +1,144 @@
-import { Component, OnInit } from '@angular/core';
-// 1. IMPORTAR OS TIPOS DE GRÁFICO
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexXAxis,
-  ApexTitleSubtitle,
-  ApexDataLabels,
-  ApexTooltip,
-  ApexYAxis,
-  ApexPlotOptions,
-  ApexLegend,
-  ApexResponsive
-} from 'ng-apexcharts';
+import { Component } from '@angular/core';
 
-// Tipos para os nossos gráficos
-export type SalesChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  yaxis: ApexYAxis;
-  tooltip: ApexTooltip;
-  plotOptions: ApexPlotOptions;
-  dataLabels: ApexDataLabels;
-};
-
-export type CategoryChartOptions = {
-  series: any;
-  chart: ApexChart;
-  labels: any;
-  colors: any;
-  legend: ApexLegend;
-  dataLabels: ApexDataLabels;
-  responsive: ApexResponsive[];
-};
-
-// --- Tipos de Dados (já os tinhas) ---
-type Trend = 'up' | 'down' | 'warning';
-type IntegrationStatus = 'online' | 'unstable';
-type ExpiringStatus = 'critical' | 'warning';
-
-interface SidebarItem {
-  label: string;
-  icon: string;
-  active?: boolean;
-}
-interface Metric {
-  title: string;
-  value: string;
-  change: string;
-  trend: Trend;
-  icon: string;
-}
-interface Integration {
+export interface Product {
+  id: string;
   name: string;
-  status: IntegrationStatus;
+  category: string;
+  pharmacy: string;
+  expiry: string;
+  stock: number;
 }
-interface SalesPoint {
+
+export interface ApiIntegration {
   name: string;
-  vendas: number;
+  status: string;
+  lastSync: string;
 }
-interface CategorySlice {
+
+export interface CategoryData {
   name: string;
   value: number;
   color: string;
 }
-interface ExpiringProduct {
-  id: number;
-  name: string;
-  batch: string;
-  quantity: number;
-  expiry: string;
-  status: ExpiringStatus;
-}
 
+export interface StateData {
+  state: string;
+  count: number;
+}
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
-export class AdminDashboardComponent implements OnInit {
+export class AdminDashboardComponent {
+  activeMenuItem = 'dashboard';
+  filterDays: 7 | 30 = 30;
 
-  // ==========================================================
-  // PASSO 1: MOVER OS DADOS "MOCK" PARA CIMA
-  // ==========================================================
   
-  sidebarItems: SidebarItem[] = [
-    { label: 'Dashboard', icon: 'layout-dashboard', active: true },
-    { label: 'Produtos', icon: 'package' },
-    { label: 'Pedidos', icon: 'shopping-cart' },
-    { label: 'Clientes', icon: 'users' },
-    { label: 'Relatórios', icon: 'bar-chart-3' },
-    { label: 'Documentos', icon: 'file-text' },
-    { label: 'Configurações', icon: 'settings' },
+  clientsByState: StateData[] = [
+    { state: 'SP', count: 145 },
+    { state: 'RJ', count: 89 },
+    { state: 'MG', count: 67 },
+    { state: 'RS', count: 54 },
+    { state: 'BA', count: 43 },
   ];
 
-  metrics: Metric[] = [
-    { title: 'Vendas do Mês', value: 'R$ 248.540', change: '+12,5%', trend: 'up', icon: 'trending-up' },
-    { title: 'Produtos Ativos', value: '1.245', change: '+8', trend: 'up', icon: 'package' },
-    { title: 'Pedidos Pendentes', value: '89', change: '-5', trend: 'down', icon: 'shopping-cart' },
-    { title: 'Alerta de Estoque', value: '23', change: '+3', trend: 'warning', icon: 'alert-circle' },
-  ];
-
-  integrations: Integration[] = [
-    { name: 'ERP Principal', status: 'online' },
-    { name: 'Gateway Pagamento', status: 'online' },
-    { name: 'API Estoque', status: 'unstable' },
-    { name: 'Sistema Logística', status: 'online' },
-  ];
-
-  salesData: SalesPoint[] = [
-    { name: 'Jan', vendas: 145000 },
-    { name: 'Fev', vendas: 182000 },
-    { name: 'Mar', vendas: 165000 },
-    { name: 'Abr', vendas: 198000 },
-    { name: 'Mai', vendas: 225000 },
-    { name: 'Jun', vendas: 248540 },
-  ];
-
-  categoryData: CategorySlice[] = [
+  categoryData: CategoryData[] = [
     { name: 'Analgésicos', value: 35, color: '#176891' },
-    { name: 'Vitaminas', value: 28, color: '#16A34A' },
-    { name: 'Beleza', value: 22, color: '#F59E0B' },
-    { name: 'Infantil', value: 15, color: '#3B82F6' },
+    { name: 'Vitaminas', value: 25, color: '#16A34A' },
+    { name: 'Genéricos', value: 20, color: '#6B7280' },
+    { name: 'Infantil', value: 12, color: '#0E3A5A' },
+    { name: 'Beleza', value: 8, color: '#E6F4FA' },
   ];
 
-  expiringProducts: ExpiringProduct[] = [
-    { id: 1, name: 'Paracetamol 750mg', batch: 'L2345', quantity: 145, expiry: '15 dias', status: 'critical' },
-    { id: 2, name: 'Dipirona 500mg', batch: 'L2389', quantity: 210, expiry: '12 dias', status: 'critical' },
-    { id: 3, name: 'Ibuprofeno 600mg', batch: 'L2401', quantity: 98, expiry: '18 dias', status: 'warning' },
-    { id: 4, name: 'Vitamina C 1000mg', batch: 'L2423', quantity: 82, expiry: '25 dias', status: 'warning' },
-    { id: 5, name: 'Complexo B', batch: 'L2445', quantity: 134, expiry: '22 dias', status: 'warning' },
+  products: Product[] = [
+    {
+      id: '1',
+      name: 'Paracetamol 500mg',
+      category: 'Analgésicos',
+      pharmacy: 'Farmácia São Paulo',
+      expiry: '15 dias',
+      stock: 120,
+    },
+    {
+      id: '2',
+      name: 'Vitamina C 1000mg',
+      category: 'Vitaminas',
+      pharmacy: 'Drogaria Central',
+      expiry: '22 dias',
+      stock: 85,
+    },
+    {
+      id: '3',
+      name: 'Ibuprofeno 600mg',
+      category: 'Analgésicos',
+      pharmacy: 'Farmácia Popular',
+      expiry: '8 dias',
+      stock: 45,
+    },
+    {
+      id: '4',
+      name: 'Complexo B',
+      category: 'Vitaminas',
+      pharmacy: 'Farmácia São Paulo',
+      expiry: '30 dias',
+      stock: 200,
+    },
   ];
 
-  filterPeriod: '7days' | '30days' = '7days';
+  apiIntegrations: ApiIntegration[] = [
+    { name: 'ERP Farmácia', status: 'Online', lastSync: '2 min atrás' },
+    { name: 'Sistema de Estoque', status: 'Online', lastSync: '5 min atrás' },
+    { name: 'Gateway Pagamento', status: 'Instável', lastSync: '15 min atrás' },
+    { name: 'API Logística', status: 'Offline', lastSync: '1h atrás' },
+  ];
 
-  // ==========================================================
-  // PASSO 2: AS OPÇÕES DO GRÁFICO (podem ficar aqui)
-  // ==========================================================
-  
-  public salesChartOptions: Partial<SalesChartOptions>;
-  public categoryChartOptions: Partial<CategoryChartOptions>;
+  onMenuItemClick(itemId: string) {
+    this.activeMenuItem = itemId;
+  }
 
-  // ==========================================================
-  // PASSO 3: O CONSTRUCTOR (agora pode ler os dados)
-  // ==========================================================
+  setFilterDays(days: 7 | 30) {
+    this.filterDays = days;
+  }
+
+  getStatusBadgeClass(status: string): string {
+    switch (status) {
+      case 'Online':
+        return 'status-badge online';
+      case 'Instável':
+        return 'status-badge unstable';
+      case 'Offline':
+        return 'status-badge offline';
+      default:
+        return 'status-badge';
+    }
+  }
+
+  exportToCSV() {
+    console.log('Exportando CSV...');
+  }
+
+  getBarHeight(count: number): string {
+    const maxCount = 160; 
+    return (count / maxCount * 100) + '%';
+  }
+
   
-  constructor() {
-    // Agora this.salesData e this.categoryData existem!
+  getPieChartBackground(): string {
+    let currentAngle = 0;
+    let background = '';
     
-    this.salesChartOptions = {
-      series: [
-        {
-          name: "Vendas",
-          data: this.salesData.map(d => d.vendas) 
-        }
-      ],
-      chart: { type: "bar", height: 220, toolbar: { show: false } }, // Ajustei a altura
-      plotOptions: { bar: { borderRadius: 8, horizontal: false } },
-      dataLabels: { enabled: false },
-      xaxis: {
-        categories: this.salesData.map(d => d.name),
-        labels: { style: { colors: "#6B7280" } }
-      },
-      yaxis: { labels: { style: { colors: "#6B7280" } } },
-      tooltip: {
-        y: { formatter: (val) => "R$ " + val.toLocaleString('pt-BR') }
-      }
-    };
-
-    this.categoryChartOptions = {
-      series: this.categoryData.map(d => d.value), 
-      chart: { type: "donut", height: 250 }, // Ajustei a altura
-      labels: this.categoryData.map(d => d.name), 
-      colors: this.categoryData.map(d => d.color), 
-      dataLabels: { 
-        enabled: false // Vamos usar a tua legenda CSS original
-      }, 
-      legend: { show: false }, // Esconde a legenda do Apex
-      responsive: [{
-        breakpoint: 480,
-        options: { chart: { width: 200 } }
-      }]
-    };
-  }
-
-  ngOnInit() {
-  }
-
-  // ==========================================================
-  // PASSO 4: O RESTO DAS FUNÇÕES (já estavam corretas)
-  // ==========================================================
-  
-  setFilterPeriod(period: '7days' | '30days') {
-    this.filterPeriod = period;
-  }
-
-  get todayLabel(): string {
-    return 'Segunda, 10 de Novembro 2025';
+    this.categoryData.forEach((item, index) => {
+      const percentage = item.value;
+      const angle = (percentage / 100) * 360;
+      const startAngle = currentAngle;
+      const endAngle = currentAngle + angle;
+      
+      background += `${item.color} ${startAngle}deg ${endAngle}deg, `;
+      currentAngle = endAngle;
+    });
+    
+    return `conic-gradient(${background.slice(0, -2)})`;
   }
 }

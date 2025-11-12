@@ -6,6 +6,11 @@ import { ClienteDashboardComponent } from './dashboards/cliente-dashboard/client
 import { AdminDashboardComponent } from './dashboards/admin-dashboard/admin-dashboard.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LucideAngularModule } from 'lucide-angular';
+import { TemplateModule } from "src/app/template/template.module";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { LucideAngularModule } from 'lucide-angular';
     CommonModule,
     SistemaRoutingModule,
     NgApexchartsModule,
-    LucideAngularModule
-  ]
+    LucideAngularModule,
+    TemplateModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    NgxChartsModule
+]
 })
 export class SistemaModule { }

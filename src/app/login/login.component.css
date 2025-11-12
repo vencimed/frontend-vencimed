@@ -1,0 +1,236 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--vcm-gray-50);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 24px;
+  border: 1px solid var(--vcm-gray-200);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.login-page-container {
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box; 
+  padding: 0 1rem;
+}
+
+@media (min-width: 600px) {
+  .login-page-container {
+    padding: 0;
+  }
+}
+
+.login-header {
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  color: var(--vcm-primary-600);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.back-button:hover {
+  color: var(--vcm-primary-700);
+}
+
+.login-header h1 {
+  margin: 0 0 0.5rem 0;
+ 
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.login-header p {
+  margin: 0;
+  color: var(--vcm-gray-500);
+  font-size: 0.875rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--vcm-gray-700);
+}
+
+.form-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 1rem;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid var(--vcm-gray-200);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+}
+
+.form-input:focus {
+  outline: none;
+ 
+  border-color: var(--vcm-primary-600);
+  box-shadow: none;
+}
+
+.form-input::placeholder {
+  color: var(--vcm-gray-400);
+  opacity: 0.6;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-checkbox {
+ 
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid var(--vcm-gray-300);
+}
+
+.form-checkbox:checked {
+  background-color: var(--vcm-primary-600);
+  border-color: var(--vcm-primary-600);
+}
+
+
+.form-checkbox:checked::after {
+  content: none;
+}
+
+.checkbox-label {
+  font-size: 0.875rem;
+  color: var(--vcm-gray-700);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.forgot-password-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--vcm-primary-600);
+  cursor: pointer;
+}
+
+.forgot-password-button:hover {
+  text-decoration: underline;
+}
+
+.submit-button {
+  width: 100%;
+  height: 44px;
+  padding: 0.75rem 0;
+  background-color: var(--vcm-green-600);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.submit-button:hover {
+  background-color: var(--vcm-green-500);
+}
+
+.form-separator {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.separator-line {
+  width: 100%;
+  border-top: 1px solid var(--vcm-gray-200);
+}
+
+.separator-text {
+  position: absolute;
+  background-color: white;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  color: var(--vcm-gray-500);
+}
+
+.sso-button {
+  width: 100%;
+  height: 44px;
+  padding: 0.75rem 0;
+  border: 1px solid var(--vcm-gray-200);
+  border-radius: 8px;
+  background-color: white;
+  color: var(--vcm-gray-700);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.sso-button:hover {
+  background-color: var(--vcm-gray-50);
+}
+
+.error-message {
+  color: #D93025;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+
+.form-input.invalid-input {
+  border-color: #D93025;
+}
+
+
+.form-input.invalid-input:focus {
+  border-color: #D93025;
+  box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.3);
+}

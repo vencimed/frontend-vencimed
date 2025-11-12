@@ -1,28 +1,21 @@
-// Em: src/app/app.module.ts
-// ESTA É A VERSÃO COM A SINTAXE CORRIGIDA
-
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
-// --- Os teus componentes e módulos existentes ---
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
 import { SistemaModule } from './sistema/sistema.module';
-import { TemplateModule } from './template/template.module';
 import { PageMarketplaceComponent } from './page-marketplace/page-marketplace.component';
-
-// --- NOSSAS ADIÇÕES (para a conversão) ---
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ToastrModule } from 'ngx-toastr';
 import { LucideAngularModule, ShoppingCart, User, Search, ChevronLeft, 
@@ -34,6 +27,8 @@ import { HeroSectionComponent } from './core/components/hero-section/hero-sectio
 import { CategoryChipComponent } from './core/components/category-chip/category-chip.component';
 import { ProductCardComponent } from './core/components/product-card/product-card.component';
 import { CartDrawerComponent } from './core/components/cart-drawer/cart-drawer.component';
+import { MetricCardComponent } from './core/components/metric-card/metric-card.component';
+import { TemplateModule } from './template/template.module'; 
 
 @NgModule({
   declarations: [
@@ -48,6 +43,9 @@ import { CartDrawerComponent } from './core/components/cart-drawer/cart-drawer.c
     CategoryChipComponent,
     ProductCardComponent,
     CartDrawerComponent,
+    MetricCardComponent, 
+       
+
   ],
   
   imports: [
@@ -57,15 +55,16 @@ import { CartDrawerComponent } from './core/components/cart-drawer/cart-drawer.c
     BrowserAnimationsModule,
     HttpClientModule,
     TemplateModule,
-    SistemaModule,
     FormsModule,
-
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
     MatSelectModule,
+    MatIconModule,
+    MatListModule,
     NgApexchartsModule,
+    
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-top-right',
@@ -78,6 +77,7 @@ import { CartDrawerComponent } from './core/components/cart-drawer/cart-drawer.c
       AlertCircle, Download, Phone, Mail, MapPin
     })
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   
 
   providers: [],
