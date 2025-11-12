@@ -1,8 +1,158 @@
 <div class="admin-dashboard">
-  <app-navbar [activeItem]="activeMenuItem" (itemClick)="onMenuItemClick($event)"></app-navbar>
-  <main class="main-content">
-    <!-- Conteúdo da página será exibido aqui -->
-    <router-outlet></router-outlet>
-    <!-- Ou, se não estiver usando roteamento, você pode ter uma condicional para exibir diferentes componentes baseado em activeMenuItem -->
+  <app-navbar 
+    [activeItem]="activeMenuItem" 
+    (itemClick)="onMenuItemClick($event)">
+  </app-navbar>
+  
+  <main class="main-content shifted">
+    <div class="dashboard-content">
+      <!-- Metrics Cards -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Total de Clientes</span>
+            <div class="metric-icon users">
+              <i class="icon-users"></i>
+            </div>
+          </div>
+          <div class="metric-value">398</div>
+          <div class="metric-change positive">+12% vs mês anterior</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Clientes por Estado</span>
+            <div class="metric-icon trending">
+              <i class="icon-trending-up"></i>
+            </div>
+          </div>
+          <div class="metric-value">5 estados</div>
+          <div class="metric-change neutral">SP lidera com 145</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Farmácias Ativas</span>
+            <div class="metric-icon building">
+              <i class="icon-building2"></i>
+            </div>
+          </div>
+          <div class="metric-value">127</div>
+          <div class="metric-change positive">+8 novas este mês</div>
+        </div>
+      </div>
+
+      <!-- Charts and Tables -->
+      <div class="dashboard-grid">
+        <!-- Left Column - Charts and Table -->
+        <div class="left-column">
+          <!-- Bar Chart Simples -->
+          <div class="chart-card">
+            <h3 class="chart-title">Clientes por Estado</h3>
+            <div class="simple-bar-chart">
+              <div class="bars-container">
+                <div *ngFor="let state of clientsByState" class="bar-item">
+                  <div class="bar" [style.height]="getBarHeight(state.count)">
+                    <span class="bar-value">{{state.count}}</span>
+                  </div>
+                  <span class="bar-label">{{state.state}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Table -->
+          <div class="table-card">
+            <div class="table-header">
+              <h3>Produtos Próximos ao Vencimento</h3>
+              <div class="table-controls">
+                <div class="filter-buttons">
+                  <button 
+                    [class.active]="filterDays === 7"
+                    (click)="setFilterDays(7)"
+                    class="filter-btn">
+                    Últimos 7 dias
+                  </button>
+                  <button 
+                    [class.active]="filterDays === 30"
+                    (click)="setFilterDays(30)"
+                    class="filter-btn">
+                    Até 30 dias
+                  </button>
+                </div>
+                <button class="export-btn" (click)="exportToCSV()">
+                  <i class="icon-download"></i>
+                  Exportar CSV
+                </button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="products-table">
+                <thead>
+                  <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Farmácia</th>
+                    <th>Validade</th>
+                    <th>Estoque</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of products">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.pharmacy }}</td>
+                    <td>
+                      <span class="expiry-badge">{{ product.expiry }}</span>
+                    </td>
+                    <td>{{ product.stock }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Side Cards -->
+        <div class="right-column">
+          <!-- Pie Chart Simples -->
+          <div class="chart-card">
+            <h3 class="chart-title">Categorias mais clicadas</h3>
+            <div class="simple-pie-chart">
+              <div class="pie-container">
+                <div class="pie-chart-visual" [style.background]="getPieChartBackground()"></div>
+                <div class="chart-legend">
+                  <div *ngFor="let item of categoryData" class="legend-item">
+                    <div class="legend-color" [style.background-color]="item.color"></div>
+                    <span class="legend-label">{{ item.name }}</span>
+                    <span class="legend-value">{{ item.value }}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- API Status -->
+          <div class="api-card">
+            <h3 class="api-title">Status das Integrações de API</h3>
+            <div class="api-list">
+              <div *ngFor="let api of apiIntegrations" class="api-item">
+                <div class="api-info">
+                  <div class="api-name">{{ api.name }}</div>
+                  <div class="api-last-sync">{{ api.lastSync }}</div>
+                </div>
+                <span [class]="getStatusBadgeClass(api.status)">
+                  {{ api.status }}
+                </span>
+              </div>
+            </div>
+            <button class="details-btn">
+              Ver detalhes de logs →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </div>

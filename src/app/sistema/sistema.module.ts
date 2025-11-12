@@ -10,6 +10,7 @@ import { TemplateModule } from "src/app/template/template.module";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatIconModule } from "@angular/material/icon";
     TemplateModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgxChartsModule
 ]
 })
 export class SistemaModule { }

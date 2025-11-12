@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +30,6 @@ import { CartDrawerComponent } from './core/components/cart-drawer/cart-drawer.c
 import { MetricCardComponent } from './core/components/metric-card/metric-card.component';
 import { TemplateModule } from './template/template.module'; 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +43,8 @@ import { TemplateModule } from './template/template.module';
     CategoryChipComponent,
     ProductCardComponent,
     CartDrawerComponent,
-    MetricCardComponent,    
+    MetricCardComponent, 
+       
 
   ],
   
@@ -64,6 +64,7 @@ import { TemplateModule } from './template/template.module';
     MatIconModule,
     MatListModule,
     NgApexchartsModule,
+    
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-top-right',
@@ -76,6 +77,7 @@ import { TemplateModule } from './template/template.module';
       AlertCircle, Download, Phone, Mail, MapPin
     })
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   
 
   providers: [],
