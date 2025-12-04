@@ -38,6 +38,10 @@ export class LoginComponent {
     this.router.navigate(['/']); 
   }
 
+  handleRecuperarSenhaClick(): void {
+    this.router.navigate(['/recuperar-senha']); 
+  }
+
   handleRegisterClick(): void {
     this.router.navigate(['/register']); 
   }

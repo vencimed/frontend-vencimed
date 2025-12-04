@@ -9,13 +9,14 @@
 
 :root {
   --font-size: 16px;
-  
  
   --vcm-primary-900: #0B2B47;
   --vcm-primary-800: #0E3A5A;
   --vcm-primary-700: #124B72;
   --vcm-primary-600: #176891;
   --vcm-primary-100: #E6F4FA;
+
+  --vcm-bg-primary: #155550;
   
   --vcm-green-600: #16A34A;
   --vcm-green-500: #22C55E;

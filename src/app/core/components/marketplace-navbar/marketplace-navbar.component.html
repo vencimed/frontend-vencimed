@@ -6,33 +6,42 @@
 
       <!-- Logo -->
       <div class="logo-wrapper">
-        <div class="logo-icon-bg" aria-hidden="true">
-          <span>V</span>
-        </div>
-        <span class="logo-text">VCM Pharma</span>
+        <img src="/assets/imagens/vencimed logo 2.svg" alt="logo VenciMed">
+
       </div>
 
       <div class="search-desktop">
         <div class="search-container">
-          <lucide-icon name="search" class="search-icon" aria-hidden="true"></lucide-icon>
           <input
-            type="text"
-            placeholder="O que você procura?"
-            (input)="onSearchChange($event)"
-            class="search-input"
-            aria-label="Pesquisar"
+          type="text"
+          placeholder="Insira o nome do produto"
+          (input)="onSearchChange($event)"
+          class="search-input"
+          aria-label="Pesquisar"
           />
+          <lucide-icon name="search" class="search-icon" aria-hidden="true"></lucide-icon>
         </div>
       </div>
 
       <!-- Ações -->
       <div class="actions-wrapper">
-
-        <button class="profile-desktop" type="button" routerLink="/login">
-          <lucide-icon name="user" [size]="20" aria-hidden="true"></lucide-icon>
+        <button class="map-location" type="button">
+          <lucide-icon name="map-pin" [size]="30" aria-hidden="true"></lucide-icon>
+          <div class="location-text">
+            <p>Retirar em</p>
+            <p class="cep-user">Insira seu CEP</p>
+          </div>
+        </button>
+        <button class="profile-desktop" type="button" >
+          <!-- <lucide-icon name="user" [size]="20" aria-hidden="true"></lucide-icon> -->
+          <img src="/assets/icones/user-icon.svg" alt="User">
           <div class="profile-text" aria-hidden="true">
             <p>Olá, Bem-vindo!</p>
-            <p class="profile-login">Entrar</p>
+            <div class="options-user">
+              <p class="profile-login" routerLink="/login">Entrar</p>
+              <p>ou</p>
+              <p class="profile-login" routerLink="/register">Cadastrar</p>
+            </div>
           </div>
         </button>
 
@@ -42,14 +51,24 @@
 
         <button (click)="onCartClick()" class="cart-button" type="button" aria-label="Minha Cesta">
           <div class="cart-icon-wrapper">
-            <lucide-icon name="shopping-cart" [size]="24" aria-hidden="true"></lucide-icon>
+            <img src="/assets/icones/cesta.svg" alt="Cesta">
+            <!-- <lucide-icon name="shopping-cart" [size]="24" aria-hidden="true"></lucide-icon> -->
             <ng-container *ngIf="(cartItemCount$ | async) as count">
               <span *ngIf="count > 0" class="cart-badge">
                 {{ count > 9 ? '9+' : count }}
               </span>
             </ng-container>
           </div>
-          <span class="cart-text">Meu Carrinho</span>
+          <div class="cart-info">
+            <span class="cart-text">Minha Cesta</span>
+            <span *ngIf="(subTotal$ | async) as subtotal; else zeroSubtotal" class="subtotal-price">
+              {{ subtotal.toFixed(2) }}
+            </span>
+  
+            <ng-template #zeroSubtotal>
+              <span class="subtotal-price">00,00</span>
+            </ng-template>
+          </div>
         </button>
 
       </div>
