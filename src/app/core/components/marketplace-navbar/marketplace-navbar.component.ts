@@ -11,13 +11,14 @@ export class MarketplaceNavbarComponent implements OnInit {
 
 
   public cartItemCount$!: Observable<number>;
-
+  public subTotal$!: Observable<number>;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
 
     this.cartItemCount$ = this.cartService.getTotalItemCount();
+    this.subTotal$ = this.cartService.getSubtotal();
   }
 
  

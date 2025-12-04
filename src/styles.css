@@ -9,16 +9,19 @@
 
 :root {
   --font-size: 16px;
-  
  
   --vcm-primary-900: #0B2B47;
   --vcm-primary-800: #0E3A5A;
   --vcm-primary-700: #124B72;
   --vcm-primary-600: #176891;
   --vcm-primary-100: #E6F4FA;
+
+  --vcm-bg-primary: #155550;
   
   --vcm-green-600: #16A34A;
   --vcm-green-500: #22C55E;
+  --vcm-green-primary: #247F78;
+  --vcm-green-secondary: #37B3AA;
   
   --vcm-warn-500: #F59E0B;
   --vcm-warn-bg: #FEF3C7;
@@ -34,7 +37,9 @@
   --vcm-gray-500: #6B7280;
   --vcm-gray-200: #E5E7EB;
   --vcm-gray-50: #F9FAFB;
-  
+
+  --vcm-text-1: #235B7E;
+  --vcm-text-2: #286CA8;
  
   --background: #ffffff;
   --foreground: var(--vcm-gray-900);

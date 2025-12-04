@@ -1,11 +1,12 @@
 <div class="login-page-container">
   <div class="login-card">
+    <button (click)="handleBackClick()" class="back-button">
+      <img src="/assets/icones/arrow-left.svg" alt=""> Voltar
+    </button>
     <div class="login-header">
-      <button (click)="handleBackClick()" class="back-button">
-        ← Voltar ao marketplace
-      </button>
-      <h1>Entrar</h1>
-      <p>Acesse sua conta para continuar</p>
+      <img src="/assets/imagens/vencimed logo 2.svg" alt="Logo VenciMed" >
+      <h1>Bem-vindo(a) de volta!</h1>
+      <p>Continue comprando com economia, qualidade e propósito.</p>
     </div>
 
     <form (ngSubmit)="handleSubmit(loginForm)" #loginForm="ngForm" class="login-form" novalidate>
@@ -17,7 +18,7 @@
           type="email"
           [(ngModel)]="email"
           name="email"
-          placeholder="seu@email.com"
+          placeholder="Insira seu e-mail"
           class="form-input"
           required
           email
@@ -34,18 +35,23 @@
 
       <div class="form-field">
         <label for="password">Senha</label>
-        <input
-          id="password"
-          type="password"
-          [(ngModel)]="password"
-          name="password"
-          placeholder="••••••••"
-          class="form-input"
-          required
-          minlength="4"
-          #passwordInput="ngModel"
-          [class.invalid-input]="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)"
-        />
+        <div class="input-icon-wrapper">
+          <input
+            id="password"
+            [type]="passwordFieldType"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="••••••••"
+            class="form-input"
+            required
+            minlength="4"
+            #passwordInput="ngModel"
+            [class.invalid-input]="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)"
+          />
+          <button type="button" (click)="togglePasswordVisibility()" class="eye-button" tabindex="-1">
+            <i [class]="passwordFieldType === 'password' ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+          </button>
+        </div>
         <div *ngIf="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)" class="error-message">
           <div *ngIf="passwordInput.errors?.['required']">Senha é obrigatória.</div>
           <div *ngIf="passwordInput.errors?.['minlength']">A senha deve ter pelo menos 4 caracteres.</div>
@@ -53,36 +59,25 @@
       </div>
 
       <div class="form-options">
-        <div class="remember-me">
-          <input
-            type="checkbox"
-            id="remember"
-            [(ngModel)]="rememberMe"
-            name="rememberMe"
-            class="form-checkbox"
-          />
-          <label for="remember" class="checkbox-label">
-            Lembrar de mim
-          </label>
-        </div>
-        <button type="button" class="forgot-password-button">
+
+        <button type="button" (click)="handleRecuperarSenhaClick()" class="forgot-password-button">
           Esqueci minha senha
         </button>
       </div>
 
       <button type="submit" class="submit-button">
-        Entrar
+        ENTRAR
       </button>
 
-      <div class="form-separator">
-        <div class="separator-line"></div>
-        <span class="separator-text">ou entre com</span>
+      <div class="register-redirect">
+        <p>Ainda não possui conta?</p> <a href="">Criar agora</a>
       </div>
 
-      <button type="button" class="sso-button">
-        SSO / OAuth
-      </button>
-
     </form>
+  </div>
+  <div class="image-section">
+    <div class="text-image">
+      <h1>Economia para você, menos resíduos para o planeta.</h1>
+    </div>
   </div>
 </div>
