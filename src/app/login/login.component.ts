@@ -12,6 +12,7 @@ export class LoginComponent {
   public email: string = "";
   public password: string = "";
   public rememberMe: boolean = false;
+  passwordFieldType = 'password';
 
   constructor(private router: Router) { }
 
@@ -35,5 +36,13 @@ export class LoginComponent {
 
   public handleBackClick(): void {
     this.router.navigate(['/']); 
+  }
+
+  handleRegisterClick(): void {
+    this.router.navigate(['/register']); 
+  }
+
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }
