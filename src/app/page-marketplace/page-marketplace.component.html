@@ -1,15 +1,48 @@
 <app-hero-section></app-hero-section>
 
+<section class="main-content">
+
+</section>
+<div class="search-products-wrapper">
+  <div class="search-products-container">
+    <h1 class="search-products-title">Buscar Produtos</h1>
+    <input
+      type="text"
+      placeholder="Insira o nome do produto"
+      (input)="onSearchChange($event)"
+      class="search-input"
+      aria-label="Pesquisar"
+    />
+  
+    <select class="hero-select">
+      <option value="">Validade</option>
+    </select>
+  
+    <select class="hero-select">
+      <option value="">Estados</option>
+      <option value="CE">Ceará</option>
+      <option value="SP">São Paulo</option>
+      <option value="RJ">Rio de Janeiro</option>
+      <option value="MG">Minas Gerais</option>
+    </select>
+  
+    <button class="button-primary">Buscar <img src="/assets/icones/arrow-right.svg" alt="Seta direita"></button>
+  </div>
+</div>
+
+
 <div class="category-bar">
   <div class="container">
     <div class="category-scroll">
-      
-      <app-category-chip
-        *ngFor="let category of categories"
-        [label]="category"
-        [selected]="selectedCategory === category"
-        (clicked)="selectCategory(category)">
-      </app-category-chip>
+          
+    <app-category-chip
+      *ngFor="let category of categories"
+      [label]="category"
+      [icon]="categoryIcons[category]"
+      [selected]="selectedCategory === category"
+      (clicked)="selectCategory(category)">
+    </app-category-chip>
+
       
     </div>
   </div>

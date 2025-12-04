@@ -27,6 +27,7 @@
   --vcm-warn-bg: #FEF3C7;
   
   --vcm-error-500: #EF4444;
+  --vcm-error-hover: #ff1a1a;
   --vcm-error-bg: #FEE2E2;
   
   --vcm-info-500: #3B82F6;
@@ -34,10 +35,14 @@
   
   --vcm-gray-900: #0F172A;
   --vcm-gray-700: #374151;
+  --vcm-gray-600: #52687A;
   --vcm-gray-500: #6B7280;
+  --vcm-gray-400: #859BAD;
   --vcm-gray-200: #E5E7EB;
+  --vcm-gray-100: #E0E6EB;
   --vcm-gray-50: #F9FAFB;
 
+  --vcm-text-0: white;
   --vcm-text-1: #235B7E;
   --vcm-text-2: #286CA8;
  
@@ -219,4 +224,24 @@ body {
 
 .metric-trend-warning {
   color: #f39c12; /* Amarelo */
+}
+
+.button-primary{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: var(--vcm-text-0);
+  background-color: var(--vcm-green-primary);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.button-primary:hover{
+  background-color: var(--vcm-green-secondary);
 }

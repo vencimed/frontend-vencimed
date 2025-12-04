@@ -129,7 +129,7 @@ export const MOCK_PRODUCTS: Product[] = [
   }
 ];
 
-export const CATEGORIES = ['Analgésicos', 'Vitaminas', 'Genê', 'Infantil', 'Beleza'];
+export const CATEGORIES = ['Em oferta','Medicamentos e Saúde','Vitaminas','Suplementos', 'Pele e Beleza', 'Mamães e Bebês', 'Higiene Pessoal'];
 
 
 // --- O SERVIÇO (A LÓGICA) ---
@@ -209,6 +209,46 @@ export class CartService {
       this.cartItemsSubject.next(newItems);
     }
   }
+
+  public addQuantity(id: string): void {
+    const currentItems = this.cartItemsSubject.getValue();
+    const item = currentItems.find(i => i.id === id);
+    if (!item) return;
+
+    const product = MOCK_PRODUCTS.find(p => p.id === id);
+    const maxStock = product?.stock ?? Infinity;
+
+    if (item.quantity >= maxStock) {
+      this.toastr.warning('Quantidade máxima em estoque atingida.');
+      return;
+    }
+
+    const newItems = currentItems.map(i =>
+      i.id === id ? { ...i, quantity: i.quantity + 1 } : i
+    );
+
+    this.cartItemsSubject.next(newItems);
+  }
+
+  public removeQuantity(id: string): void {
+    const currentItems = this.cartItemsSubject.getValue();
+    const item = currentItems.find(i => i.id === id);
+    if (!item) return;
+
+    const newQty = item.quantity - 1;
+
+    if (newQty <= 0) {
+      this.removeItem(id); // já dá o toastr e remove do state
+      return;
+    }
+
+    const newItems = currentItems.map(i =>
+      i.id === id ? { ...i, quantity: newQty } : i
+    );
+
+    this.cartItemsSubject.next(newItems);
+  }
+
 
   public removeItem(id: string): void {
     const currentItems = this.cartItemsSubject.getValue();
