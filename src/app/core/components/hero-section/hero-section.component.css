@@ -4,22 +4,10 @@
   padding-top: var(--navbar-total-height);
 }
 
-
 .hero-bg {
   background: linear-gradient(135deg, var(--vcm-primary-800), var(--vcm-primary-600));
   color: #fff;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
-
-@media (min-width: 1024px) {
-  .hero-bg {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-
 
 .content-wrapper {
   max-width: 1024px;
@@ -47,12 +35,10 @@
   }
 }
 
-
-/* HERO MARKETPLACE – topo da página */
+/* 
 .hero-marketplace {
-  background: linear-gradient(135deg, var(--vcm-primary-800), var(--vcm-primary-600));
+  background: var(--vcm-green-primary);
   color: #ffffff;
-  padding: 4.5rem 0 4rem;
 }
 
 .hero-layout {
@@ -80,7 +66,7 @@
   opacity: 0.9;
 }
 
-/* Card branco de busca */
+
 .hero-search-card {
   background: #ffffff;
   border-radius: 0.9rem;
@@ -98,32 +84,30 @@
   gap: 0.75rem;
 }
 
-/* A partir de tablet: fica em linha, mas pode quebrar se não couber */
 @media (min-width: 768px) {
   .hero-search-row {
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;       /* <- permite quebrar de linha */
+    flex-wrap: wrap;  
     column-gap: 0.75rem;
     row-gap: 0.75rem;
   }
 
   .hero-input-wrapper {
-    flex: 1 1 260px;       /* input ocupa o resto do espaço */
+    flex: 1 1 260px;       
     min-width: 0;
   }
 
   .hero-select {
-    flex: 0 0 210px;       /* largura fixa pro select */
+    flex: 0 0 210px;       
   }
 
   .hero-search-button {
-    flex: 0 0 auto;        /* botão só o necessário */
+    flex: 0 0 auto;       
   }
 }
 
 
-/* Input de busca */
 .hero-input-wrapper {
   position: relative;
   flex: 1;
@@ -153,7 +137,6 @@
   box-shadow: 0 0 0 1px var(--vcm-primary-100);
 }
 
-/* Select de estado + botão buscar */
 .hero-select {
   width: 100%;
   padding: 0.65rem 0.9rem;
@@ -196,7 +179,6 @@
   }
 }
 
-/* Chips rápidos dentro do hero */
 .hero-quick-filters {
   display: flex;
   flex-wrap: wrap;
@@ -224,7 +206,6 @@
   background: var(--vcm-primary-100);
 }
 
-/* Faixa verde de validade */
 .hero-expiry-banner {
   margin-top: 1.8rem;
   background: var(--vcm-green-600);
@@ -263,7 +244,6 @@
   align-items: center;
 }
 
-/* botões 30 / 60 / 90 */
 .expiry-chips {
   display: flex;
   flex-wrap: wrap;
@@ -284,7 +264,6 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* SELECT novo ao lado dos botões */
 .expiry-select {
   min-width: 160px;
   padding: 0.35rem 0.7rem;
@@ -296,7 +275,6 @@
   outline: none;
 }
 
-/* botão "Ver ofertas" */
 .hero-expiry-cta {
   padding: 0.4rem 1rem;
   border-radius: 0.6rem;
@@ -310,4 +288,86 @@
 
 .hero-expiry-cta:hover {
   filter: brightness(0.97);
+} */
+
+.hero-marketplace {
+  background: var(--vcm-green-primary);
+  color: #ffffff;
+  width: 100%;
+  height: auto;
 }
+
+/* Container do carrossel */
+.hero-carousel {
+  width: 100%;
+  margin: 0;          /* tira centralização com auto */
+  padding: 0;         /* sem padding lateral */
+}
+
+@media (min-width: 1024px) {
+  .hero-carousel {
+    padding: 0 var(--navbar-x-desktop);
+  }
+}
+
+.hero-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0f172a;
+}
+
+/* Slides */
+.hero-slide {
+  /* tira o absolute pra deixar o container crescer conforme a imagem */
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  display: none; /* some quando não está ativo */
+}
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  display: block; /* mostra só o slide ativo */
+}
+
+.hero-slide img {
+  display: block;
+  width: 100%;
+  height: auto;         /* deixa a altura proporcional */
+  object-fit: contain;  /* garante que a imagem apareça inteira */
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.hero-dot.active {
+  width: 20px;
+  background: #ffffff;
+}
+
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+

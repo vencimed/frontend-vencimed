@@ -19,6 +19,7 @@
   justify-content: space-between;
   padding: 1.5rem;
   border-bottom: 1px solid var(--vcm-gray-200);
+  background: var(--vcm-bg-primary);
 }
 .header-title-wrapper {
   display: flex;
@@ -27,17 +28,13 @@
 }
 .header-title {
   font-size: 1.25rem;
-  color: var(--vcm-gray-900);
+  color: var(--vcm-gray-50);
   margin: 0;
   font-weight: 600;
 }
 .header-badge {
- 
-  padding: 0.125rem 0.625rem;
-  border-radius: 9999px;
-  background-color: var(--vcm-primary-100);
-  color: var(--vcm-primary-600);
-  font-size: 0.875rem;
+  color: var(--vcm-gray-50);
+  font-size: 1.25rem;
 }
 .close-button {
  
@@ -75,7 +72,6 @@
   text-align: center;
 }
 .empty-icon-wrapper {
- 
   width: 8rem;
   height: 8rem;
   border-radius: 9999px;
@@ -86,9 +82,7 @@
   margin-bottom: 1.5rem;
 }
 .empty-icon {
- 
-  width: 4rem;
-  height: 4rem;
+  align-content: center;
   color: var(--vcm-gray-500);
 }
 .empty-title {
@@ -107,30 +101,36 @@
 
 
 .continue-button {
- 
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
   border: 2px solid var(--vcm-gray-200);
   color: var(--vcm-gray-900);
   background-color: white;
   transition: all 0.15s ease-in-out;
   cursor: pointer;
+  font-size: 18px;
   font-weight: 500;
   width: 100%;
 }
-.continue-button:hover {
-  border-color: var(--vcm-primary-600);
-  color: var(--vcm-primary-600);
-}
+
 .continue-button.primary {
- 
-  background-color: var(--vcm-green-600);
+  background-color: var(--vcm-bg-primary);
   color: white;
-  border-color: var(--vcm-green-600);
 }
 .continue-button.primary:hover {
   background-color: var(--vcm-green-500);
   border-color: var(--vcm-green-500);
+  color: white;
+}
+
+.continue-button.outline{
+  border-color: var(--vcm-primary-600);
+  background-color: white;
+  color: var(--vcm-primary-600);
+}
+
+.continue-button.outline:hover{
+  background-color: var(--vcm-text-1);
   color: white;
 }
 
@@ -142,19 +142,17 @@
   gap: 1rem;
 }
 .item-card {
- 
   display: flex;
   gap: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--vcm-gray-200);
+  padding: 16px;
+  border: 1px solid var(--vcm-gray-200);
+  border-radius: 24px;
 }
-.item-card:last-child {
-  border-bottom: 0;
-}
+
 .item-image-wrapper {
- 
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 0.5rem;
   overflow: hidden;
   background-color: var(--vcm-gray-50);
@@ -189,11 +187,13 @@
 }
 .item-price-wrapper {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: start;
+  flex-direction:column-reverse;
+  justify-content: center;
+  gap: 2px;
 }
 .item-price-discount {
-  color: var(--vcm-green-600);
+  color: var(--vcm-green-primary);
   font-weight: 600;
 }
 .item-price-original {
@@ -203,43 +203,66 @@
 }
 
 .item-actions {
- 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
 }
 .remove-button {
- 
-  color: var(--vcm-gray-500);
+  color: var(--vcm-error-500);
   transition: color 0.15s ease-in-out;
   background: none;
   border: none;
   cursor: pointer;
 }
 .remove-button:hover {
-  color: var(--vcm-error-500);
+  color: var(--vcm-error-hover);
 }
-.quantity-select {
- 
- 
-  font-size: 0.875rem;
-  color: var(--vcm-gray-900);
- 
-  width: 80px;
+
+.quantity-options{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--vcm-gray-100);
+  border-radius: 12px;
+  gap: 8px;
+  margin: 0;
+  background-color: var(--vcm-gray-50);
+}
+
+.quantity-options button{
+  border: none;
+  border-radius: 20px;
+  font-size: 2rem;
+  padding: 0 8px;
+  cursor: pointer;
+  color: var(--vcm-gray-400);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--vcm-gray-50);
+}
+
+.quantity-options span{
+  font-size: 20px;
+  min-width: 20px;
+  color: var(--vcm-gray-700);
+  text-align: center;
+  background-color: var(--vcm-gray-50);
 }
 
 
 .drawer-footer {
- 
-  border-top: 1px solid var(--vcm-gray-200);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 .subtotal-wrapper {
- 
+  border: 1px solid var(--vcm-gray-200);
+  background-color: var(--vcm-gray-50);
+  padding: 1.25rem 1rem;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -248,9 +271,9 @@
   color: var(--vcm-gray-700);
 }
 .subtotal-price {
- 
+
   font-size: 1.25rem;
-  color: var(--vcm-gray-900);
+  color: var(--vcm-bg-primary);
   font-weight: 600;
 }
 .footer-buttons {

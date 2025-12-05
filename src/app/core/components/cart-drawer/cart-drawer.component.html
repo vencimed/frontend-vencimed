@@ -2,10 +2,11 @@
   
   <div class="drawer-header">
     <div class="header-title-wrapper">
-      <h2 class="header-title">Cesta</h2>
+      <img src="/assets/icones/cesta.svg" alt="Cesta">
+      <h2 class="header-title">Minha Cesta</h2>
       <ng-container *ngIf="(totalItems$ | async) as total">
         <span *ngIf="total > 0" class="header-badge">
-          {{ total }} {{ total === 1 ? 'item' : 'itens' }}
+          ({{ total }})
         </span>
       </ng-container>
     </div>
@@ -18,7 +19,7 @@
     
     <div *ngIf="isEmpty; else itemsList" class="empty-state">
       <div class="empty-icon-wrapper">
-        <lucide-icon name="shopping-cart" class="empty-icon"></lucide-icon>
+        <lucide-icon name="shopping-cart" [size]="40" class="empty-icon"></lucide-icon>
       </div>
       <h3 class="empty-title">Seu carrinho está vazio.</h3>
       <p class="empty-subtitle">
@@ -48,17 +49,22 @@
 
           <div class="item-actions">
             <button (click)="onRemoveItem(item.id)" class="remove-button">
-              <lucide-icon name="trash-2" [size]="16"></lucide-icon>
+              <lucide-icon name="trash-2" [size]="20"></lucide-icon>
             </button>
-            
-            <mat-select 
+              
+            <div class="quantity-options">
+              <button type="button" (click)="onDecreaseQuantity(item.id)">-</button>
+              <span>{{ item.quantity }}</span>
+              <button type="button" (click)="onIncreaseQuantity(item.id)">+</button>
+            </div>
+            <!-- <mat-select 
               [value]="item.quantity" 
               (selectionChange)="onUpdateQuantity(item.id, $event)" 
               class="quantity-select">
               <mat-option *ngFor="let num of quantityOptions" [value]="num">
                 {{ num }}
-              </mat-option>
-            </mat-select>
+              </mat-option> 
+            </mat-select>-->
           </div>
         </div>
         
@@ -75,7 +81,7 @@
     </div>
     <div class="footer-buttons">
       <button (click)="onGoToCart()" class="continue-button primary">
-        Ir para Carrinho
+        Prosseguir
       </button>
       <button (click)="onClose()" class="continue-button outline">
         Continuar comprando

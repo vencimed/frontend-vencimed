@@ -34,7 +34,13 @@ export class CartDrawerComponent implements OnInit {
   }
 
   
+  onIncreaseQuantity(id: string): void {
+    this.cartService.addQuantity(id);
+  }
 
+  onDecreaseQuantity(id: string): void {
+    this.cartService.removeQuantity(id);
+  }
   
   onUpdateQuantity(id: string, event: any): void {
     const quantity = parseInt(event.value, 10);

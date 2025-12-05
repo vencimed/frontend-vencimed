@@ -10,7 +10,7 @@ export class CategoryChipComponent {
   // 1. @Input() é como o React recebe "props"
   @Input() label: string = ''; // O "label" que vem do pai
   @Input() selected: boolean = false; // O "selected" que vem do pai
-
+  @Input() icon: string | null = null;
   // 2. @Output() é como o React faz "onClick" (envia um evento para o pai)
   //    Usamos "EventEmitter" para emitir um evento.
   @Output() clicked = new EventEmitter<void>();

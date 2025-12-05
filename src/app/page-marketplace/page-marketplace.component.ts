@@ -12,6 +12,15 @@ export class PageMarketplaceComponent implements OnInit {
   public allProducts: Product[] = []; 
   public categories: string[] = [];   
 
+  public categoryIcons: { [key: string]: string } = {
+    'Em oferta': '/assets/icones/em-oferta.svg',
+    'Medicamentos e Saúde': '/assets/icones/medicamentos-e-saude.svg',
+    'Vitaminas': '/assets/icones/vitaminas.svg',
+    'Suplementos': '/assets/icones/suplementos.svg',
+    'Pele e Beleza': '/assets/icones/pele-e-beleza.svg',
+    'Mamães e Bebês': '/assets/icones/mamaes-e-bebes.svg',
+    'Higiene Pessoal': '/assets/icones/higiene-pessoal.svg',
+  };
   
   public selectedCategory: string | null = null;
   
@@ -19,13 +28,9 @@ export class PageMarketplaceComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    
     this.allProducts = this.cartService.getProducts();
     this.categories = this.cartService.getCategories();
   }
-
-  
-  
 
   public get filteredProducts(): Product[] {
     if (this.selectedCategory) {
@@ -45,9 +50,14 @@ export class PageMarketplaceComponent implements OnInit {
     }
   }
 
-  
-  
+
   onAddToCart(event: { id: string, quantity: number }): void {
     this.cartService.addToCart(event.id, event.quantity);
+  }
+
+
+  onSearchChange(event: any): void {
+    const query = event.target.value;
+    console.log('Busca:', query); 
   }
 }

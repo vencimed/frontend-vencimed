@@ -2,36 +2,52 @@
   display: inline-block;
 }
 
+/* Botão em si */
 .chip-button {
- 
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  border: none;
-  transition: all 0.15s ease-in-out;
-  white-space: nowrap;
+  border: 1px solid transparent;
+  background: transparent;        
+  border-radius: 16px;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
 
- 
-  background-color: var(--vcm-gray-50);
-  color: var(--vcm-gray-700);
+/* Conteúdo em coluna: ícone em cima, label embaixo */
+.chip-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Ícone da categoria */
+.chip-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Label */
+.chip-label {
+  font-size: 0.8rem;
   font-weight: 500;
-}
-
-
-.chip-button:not(.selected):hover {
-  background-color: var(--vcm-gray-200);
   color: var(--vcm-gray-700);
+  white-space: nowrap;
 }
 
+/* Estado hover (não selecionado) */
+.chip-button:not(.selected):hover {
+  border-color: var(--vcm-gray-200);
+  background-color: #ffffff;       /* leve realce */
+}
 
+/* Estado selecionado */
 .chip-button.selected {
-  background-color: var(--vcm-primary-600);
-  color: white;
-  font-weight: 600;
+  border-color: var(--vcm-primary-600);
+  background-color: var(--vcm-primary-100);
 }
 
-
-.chip-button.selected:hover {
-  background-color: var(--vcm-primary-600);
-  color: white;
+.chip-button.selected .chip-label {
+  color: var(--vcm-primary-800);
+  font-weight: 600;
 }

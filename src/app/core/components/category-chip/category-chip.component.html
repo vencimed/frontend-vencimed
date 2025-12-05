@@ -3,7 +3,17 @@
   class="chip-button" 
   [ngClass]="{ 'selected': selected }"
   (click)="onClick()">
-  
-  {{ label }}
+
+  <div class="chip-content">
+    <img 
+      *ngIf="icon" 
+      [src]="icon" 
+      [alt]="label" 
+      class="chip-icon" />
+
+    <span class="chip-label">
+      {{ label }}
+    </span>
+  </div>
 
 </button>

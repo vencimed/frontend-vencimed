@@ -1,6 +1,30 @@
 <!-- HERO: produtos próximos ao vencimento -->
 <section class="hero-marketplace">
-  <div class="container hero-layout">
+   <div class="hero-carousel">
+    <div class="hero-carousel-wrapper">
+      <!-- Slides -->
+      <div
+        class="hero-slide"
+        *ngFor="let slide of slides; let i = index"
+        [class.active]="i === currentSlide"
+      >
+        <img [src]="slide.src" [alt]="slide.alt" />
+      </div>
+
+      <!-- Bolinhas de navegação -->
+      <div class="hero-dots">
+        <button
+          *ngFor="let slide of slides; let i = index"
+          type="button"
+          class="hero-dot"
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)"
+          aria-label="Ir para banner"
+        ></button>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container hero-layout">
     <div class="hero-text">
       <h1 class="hero-title">
         Encontre ofertas de remédios<br />
@@ -10,7 +34,6 @@
         Mesma qualidade, melhor preço. Filtre por Categoria, Tipo ou Validade.
       </p>
 
-      <!-- Card de busca -->
       <div class="hero-search-card">
         <div class="hero-search-row">
           <div class="hero-input-wrapper">
@@ -28,7 +51,6 @@
             <option value="SP">São Paulo</option>
             <option value="RJ">Rio de Janeiro</option>
             <option value="MG">Minas Gerais</option>
-            <!-- ajuste os estados que quiser -->
           </select>
 
           <button class="hero-search-button">
@@ -36,7 +58,6 @@
           </button>
         </div>
 
-        <!-- categorias rápidas dentro do hero -->
         <div class="hero-quick-filters">
           <button class="hero-chip">
             <span class="hero-chip-icon"></span> Analgésicos
@@ -55,7 +76,6 @@
         </div>
       </div>
 
-      <!-- Faixa verde com 30 / 60 / 90 dias + SELECT novo -->
       <div class="hero-expiry-banner">
         <div class="hero-expiry-text">
           <strong>Economize comprando com antecedência</strong>
@@ -63,14 +83,12 @@
         </div>
 
         <div class="hero-expiry-actions">
-          <!-- botões 30 / 60 / 90 dias -->
           <div class="expiry-chips">
             <button class="expiry-chip">30 dias</button>
             <button class="expiry-chip">60 dias</button>
             <button class="expiry-chip">90 dias</button>
           </div>
 
-          <!-- SELECT pedido ao lado dos botões -->
           <select class="expiry-select">
             <option value="">Filtrar por validade</option>
             <option value="ate30">Até 30 dias</option>
@@ -84,5 +102,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </section>

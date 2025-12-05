@@ -8,7 +8,7 @@
   background-color: var(--vcm-bg-primary);
   box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
 }
-.top-stripe { height: 3px; background-color: var(--vcm-warn-500); }
+.top-stripe { height: 3px; background-color: var(--vcm-bg-primary); }
 
 
 :root {

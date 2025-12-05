@@ -6,7 +6,83 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.search-products-wrapper{
+  background-color: var(--background);
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
+.search-products-container{
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid var(--vcm-gray-100);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+  padding: 1rem;
+  gap: 16px;
+  width: 100%;
+  margin: 0 4rem;
+}
+
+.search-products-title{
+  font-size: 18px;
+  white-space: nowrap;       
+  flex: 0 0 auto;             
+  position: relative;         
+  padding-left: 16px; /* dá espaço pro texto não colar na barra */
+}
+
+.search-products-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;                      /* largura da coluna */
+  background: var(--vcm-green-primary);
+  border-radius: 100px;
+}
+
+
+.search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0 0 .75rem; 
+  border-radius: 12px;
+  background: #fff;
+  color: var(--vcm-gray-900);
+  background-color: var(--vcm-gray-50);
+  border: 0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.search-input::placeholder { color: var(--vcm-gray-500); }
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--vcm-primary-600);
+}
+
+.hero-select {
+  width: 50%;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--vcm-gray-200);
+  color: var(--vcm-gray-400);
+  font-size: 0.95rem;
+  outline: none;
+  background-color: var(--vcm-gray-50);
+  margin-left: 20px;
+}
+
+.hero-select:focus {
+  border-color: var(--vcm-primary-600);
+}
 
 
 .category-scroll {
@@ -15,7 +91,6 @@
   overflow-x: auto;
   scrollbar-width: thin;
 }
-
 
 .section { margin-top: 2rem; }
 .section-header {
@@ -75,16 +150,15 @@
 }
 .pagination-button:hover { border-color: var(--vcm-gray-400); }
 
-
-
-
 .category-bar {
-  background: #fff;
+  background: var(--background);
   border-bottom: 1px solid var(--vcm-gray-200);
   position: sticky;
   z-index: 99;
   width: 100%;
-  
+  display: flex;
+  justify-content: center;
+  align-content: center;
   top: var(--navbar-total-height);
 }
 
