@@ -11,7 +11,7 @@ export class PageMarketplaceComponent implements OnInit {
   
   public allProducts: Product[] = []; 
   public categories: string[] = [];   
-
+  
   public categoryIcons: { [key: string]: string } = {
     'Em oferta': '/assets/icones/em-oferta.svg',
     'Medicamentos e Saúde': '/assets/icones/medicamentos-e-saude.svg',
@@ -25,11 +25,41 @@ export class PageMarketplaceComponent implements OnInit {
   public selectedCategory: string | null = null;
   
   
+  
+  public bestSellerProducts: Product[] = [];
+  public dealsTodayProducts: Product[] = [];
+  public mostSearchedProducts: Product[] = []; 
+  public skinCareProducts: Product[] = [];  
+  public personalCareProducts: Product[] = [];
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.allProducts = this.cartService.getProducts();
     this.categories = this.cartService.getCategories();
+
+    const bestSellerIds = ['9', '10', '11', '12'];
+    this.bestSellerProducts = this.allProducts.filter(p =>
+      bestSellerIds.includes(p.id)
+    );
+
+    const DEALS_TODAY_IDS = ['13', '14', '15', '16'];
+    this.dealsTodayProducts = this.allProducts.filter(p => DEALS_TODAY_IDS.includes(p.id));
+
+    const MOST_SEARCHED_IDS = ['17', '18', '19', '20']; 
+    this.mostSearchedProducts = this.allProducts.filter(p =>
+      MOST_SEARCHED_IDS.includes(p.id)
+    );
+
+    const SKIN_CARE_IDS = ['21', '22', '23', '24'];
+    this.skinCareProducts = this.allProducts.filter(p =>
+      SKIN_CARE_IDS.includes(p.id)
+    );
+
+    const PERSONAL_CARE_IDS = ['25', '26', '27', '28'];   
+    this.personalCareProducts = this.allProducts.filter(p =>
+      PERSONAL_CARE_IDS.includes(p.id)
+    );
   }
 
   public get filteredProducts(): Product[] {

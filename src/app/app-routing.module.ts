@@ -5,6 +5,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { PageMarketplaceComponent } from './page-marketplace/page-marketplace.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 const routes: Routes = [
   
@@ -22,7 +23,7 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'recuperar-senha', component: RecuperarSenhaComponent },
-
+  { path: 'cadastro', component: CadastroComponent},
   {
     path: 'sistema',
     loadChildren: () => import('./sistema/sistema.module').then(m => m.SistemaModule)
