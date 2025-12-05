@@ -8,11 +8,11 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 export class HeroSectionComponent implements OnInit {
   slides = [
     {
-      src: 'assets/imagens/carrossel-banner.svg',
+      src: 'assets/imagens/carrossel-banner.png',
       alt: 'Banner principal com destaque de ofertas'
     },
     {
-      src: 'assets/imagens/cupom-promocional.svg',
+      src: 'assets/imagens/cupom-promocional.png',
       alt: 'Banner com cupom promocional'
     }
   ];

@@ -15,32 +15,27 @@
 
   <div class="content-wrapper">
     <div>
-      <p class="brand">{{ brand }}</p>
+      <!-- <p class="brand">{{ brand }}</p> -->
       <h3 class="name">{{ name }}</h3>
     </div>
 
-    <div *ngIf="rating" class="rating-wrapper">
+    <!-- <div *ngIf="rating" class="rating-wrapper">
       <span class="rating-star">★</span>
       <span class="rating-text">{{ rating.toFixed(1) }}</span>
-    </div>
+    </div> -->
 
     <div class="price-wrapper">
+      <p class="original-price">
+        R$ {{ originalPrice.toFixed(2) }}
+      </p>
       <div class="price-discount-wrapper">
         <span class="discount-price">
           R$ {{ discountPrice.toFixed(2) }}
         </span>
         <span class="discount-badge">
-          -{{ discount }}%
+          <img src="/assets/icones/arrow-down.svg" alt="Arrow Down">{{ discount }}%
         </span>
       </div>
-      <p class="original-price">
-        R$ {{ originalPrice.toFixed(2) }}
-      </p>
-    </div>
-
-    <div class="stock-info">
-      <span>Validade {{ expiryDays }} dias</span>
-      <span>Estoque {{ stock }}</span>
     </div>
 
     <div class="desktop-actions">
@@ -48,8 +43,7 @@
         *ngIf="quantity === 0" 
         (click)="handleAdd()" 
         class="add-button">
-        <lucide-icon name="plus" [size]="16"></lucide-icon>
-        Adicionar
+        Adicionar ao carrinho <img src="/assets/icones/cesta.svg" alt="carrinho">
       </button>
 
       <div *ngIf="quantity > 0" class="quantity-wrapper">
@@ -68,6 +62,10 @@
           Ver detalhes
         </button>
       </div>
+    </div>
+    <div class="stock-info">
+      <span>Validade: {{ expiryDays }} dias</span>
+      <!-- <span>Estoque {{ stock }}</span> -->
     </div>
   </div>
 </div>

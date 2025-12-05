@@ -126,8 +126,250 @@ export const MOCK_PRODUCTS: Product[] = [
     stock: 210,
     rating: 4.7,
     category: 'Analgésicos'
+  },
+  {
+    id: '9',
+    name: 'Cálcio Addera Cal 2.000UI MDK 90 comprimidos',
+    brand: 'Addera Cal',
+    image: '/assets/imagens-de-exemplo/calcio.png',
+    originalPrice: 247.93,
+    discountPrice: 185.95,
+    expiryDays: 90,
+    stock: 60,
+    rating: 4.9,
+    category: 'Vitaminas'
+  },
+  {
+    id: '10',
+    name: 'Novalgina Infantil Seringa Solução Oral 100ml Dipirona',
+    brand: 'Novalgina',
+    image: '/assets/imagens-de-exemplo/novalgina.png',
+    originalPrice: 48.16,
+    discountPrice: 32.99,
+    expiryDays: 90,
+    stock: 110,
+    rating: 4.7,
+    category: 'Infantil'
+  },
+  {
+    id: '11',
+    name: 'Bepantriz Pomada para Assaduras Dexpantenol 30g',
+    brand: 'Bepantriz',
+    image: '/assets/imagens-de-exemplo/benpatriz.png',
+    originalPrice: 27.37,
+    discountPrice: 12.79,
+    expiryDays: 90,
+    stock: 80,
+    rating: 4.8,
+    category: 'Infantil'
+  },
+  {
+    id: '12',
+    name: 'Antialérgico Allegra Pediátrico 6mg/ml',
+    brand: 'Allegra',
+    image: '/assets/imagens-de-exemplo/antialergico.png',
+    originalPrice: 91.05,
+    discountPrice: 65.99,
+    expiryDays: 90,
+    stock: 70,
+    rating: 4.6,
+    category: 'Infantil'
+  },  // ECONOMIZE HOJE 🔥
+  {
+    id: '13',
+    name: 'Cálcio Addera Cal 2.000UI MDK 90 comprimidos',
+    brand: 'Addera Cal',
+    image: '/assets/imagens-de-exemplo/calcio2.png',
+    originalPrice: 247.93,
+    discountPrice: 185.95,
+    expiryDays: 90,
+    stock: 60,
+    rating: 4.9,
+    category: 'Vitaminas'
+  },
+  {
+    id: '14',
+    name: 'Sabonete Líquido Johnson\'s Baby Hora do Sono 400ml',
+    brand: 'Johnson\'s Baby',
+    image: '/assets/imagens-de-exemplo/sabonete.png', 
+    originalPrice: 43.49,
+    discountPrice: 26.99,
+    expiryDays: 90,
+    stock: 95,
+    rating: 4.7,
+    category: 'Mamães e Bebês'
+  },
+  {
+    id: '15',
+    name: 'Dorflex Dip 1g 10 comprimidos',
+    brand: 'Dorflex',
+    image: '/assets/imagens-de-exemplo/dorflex.png', 
+    originalPrice: 30.34,
+    discountPrice: 20.99,
+    expiryDays: 90,
+    stock: 150,
+    rating: 4.8,
+    category: 'Medicamentos e Saúde'
+  },
+  {
+    id: '16',
+    name: 'Shampoo Clear Men Anti Caspa Ice Cool Menthol',
+    brand: 'Clear Men',
+    image: '/assets/imagens-de-exemplo/shampoo.png', 
+    originalPrice: 26.99,
+    discountPrice: 20.99,
+    expiryDays: 90,
+    stock: 120,
+    rating: 4.6,
+    category: 'Higiene Pessoal'
+  },
+    {
+    id: '17',
+    name: 'Suplemento Alimentar Neogermina Flora 12 Cápsulas',
+    brand: 'Neogermina',
+    image: '/assets/imagens-de-exemplo/suplemento.png', 
+    originalPrice: 29.15,
+    discountPrice: 16.90,
+    expiryDays: 90,
+    stock: 80,
+    rating: 4.7,
+    category: 'Medicamentos e Saúde'
+  },
+  {
+    id: '18',
+    name: 'Flanax Bayer 550mg Com 10 Comprimidos',
+    brand: 'Flanax Bayer',
+    image: '/assets/imagens-de-exemplo/flanax.png',
+    originalPrice: 28.98,
+    discountPrice: 19.90,
+    expiryDays: 90,
+    stock: 90,
+    rating: 4.8,
+    category: 'Analgésicos'
+  },
+  {
+    id: '19',
+    name: 'Baristar Medley | Com 100 Cápsulas',
+    brand: 'Baristar Medley',
+    image: '/assets/imagens-de-exemplo/baristar.png', 
+    originalPrice: 168.50,
+    discountPrice: 109.90,
+    expiryDays: 90,
+    stock: 60,
+    rating: 4.6,
+    category: 'Medicamentos e Saúde'
+  },
+  {
+    id: '20',
+    name: 'Vitamina C Cenevit Zinco Efervescente 1g Legrand',
+    brand: 'Cenevit Legrand',
+    image: '/assets/imagens-de-exemplo/vitamina-c.png', 
+    originalPrice: 20.83,
+    discountPrice: 7.42,
+    expiryDays: 90,
+    stock: 120,
+    rating: 4.9,
+    category: 'Vitaminas'
+  },
+  {
+    id: '21',
+    name: 'Protetor Solar Facial Neostrata Minesol Oil Control FPS70 40g',
+    brand: 'Neostrata Minesol',
+    image: '/assets/imagens-de-exemplo/protetor-solar-facial.png',
+    originalPrice: 109.90,
+    discountPrice: 61.90,
+    expiryDays: 90,
+    stock: 60,
+    rating: 4.8,
+    category: 'Pele e Beleza'
+  },
+  {
+    id: '22',
+    name: 'Protetor Solar Fluido Toque Seco Antioleosidade PS-01 FPS 60 40ml',
+    brand: 'Principia',
+    image: '/assets/imagens-de-exemplo/protetor-solar.png', 
+    originalPrice: 69.90,
+    discountPrice: 39.90,
+    expiryDays: 90,
+    stock: 80,
+    rating: 4.9,
+    category: 'Pele e Beleza'
+  },
+  {
+    id: '23',
+    name: 'Desodorante Roll-On Perspirex Strong 20ml',
+    brand: 'Perspirex',
+    image: '/assets/imagens-de-exemplo/roll-on.png', 
+    originalPrice: 114.90,
+    discountPrice: 85.90,
+    expiryDays: 90,
+    stock: 70,
+    rating: 4.7,
+    category: 'Higiene Pessoal'
+  },
+  {
+    id: '24',
+    name: 'Darrow Actine Gel de Limpeza 120g',
+    brand: 'Darrow Actine',
+    image: '/assets/imagens-de-exemplo/darrol.png', 
+    originalPrice: 39.90,
+    discountPrice: 29.90,
+    expiryDays: 90,
+    stock: 90,
+    rating: 4.8,
+    category: 'Pele e Beleza'
+  },
+  {
+    id: '25',
+    name: 'Loção Hidratante Nivea Milk Pele Seca a Extrasseca 400ml',
+    brand: 'Nivea',
+    image: '/assets/imagens-de-exemplo/hidratante.png',
+    originalPrice: 34.90,
+    discountPrice: 19.90,
+    expiryDays: 90,
+    stock: 80,
+    rating: 4.7,
+    category: 'Higiene Pessoal'
+  },
+  {
+    id: '26',
+    name: 'Creme Cicatricure Antissinais 30 gramas',
+    brand: 'Cicatricure',
+    image: '/assets/imagens-de-exemplo/cicatricure.png', 
+    originalPrice: 54.90,
+    discountPrice: 29.90,
+    expiryDays: 90,
+    stock: 70,
+    rating: 4.8,
+    category: 'Pele e Beleza'
+  },
+  {
+    id: '27',
+    name: 'Teste de Gravidez Tira Cuidmais',
+    brand: 'Cuidmais',
+    image: '/assets/imagens-de-exemplo/teste-gravidez.png', 
+    originalPrice: 8.98,
+    discountPrice: 7.98,
+    expiryDays: 90,
+    stock: 120,
+    rating: 4.5,
+    category: 'Medicamentos e Saúde'
+  },
+  {
+    id: '28',
+    name: 'Gel Dental Carmed Fini Beijos com Flúor 70g',
+    brand: 'Carmed Fini',
+    image: '/assets/imagens-de-exemplo/carmed.png',
+    originalPrice: 24.90,
+    discountPrice: 19.90,
+    expiryDays: 90,
+    stock: 90,
+    rating: 4.6,
+    category: 'Higiene Pessoal'
   }
 ];
+
+
 
 export const CATEGORIES = ['Em oferta','Medicamentos e Saúde','Vitaminas','Suplementos', 'Pele e Beleza', 'Mamães e Bebês', 'Higiene Pessoal'];
 

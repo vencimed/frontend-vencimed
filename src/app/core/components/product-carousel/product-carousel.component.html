@@ -1,0 +1,51 @@
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">{{ title }}</h2>
+  </div>
+  
+  <div class="product-carousel">
+    <!-- seta esquerda -->
+    <button
+      type="button"
+      class="carousel-arrow left"
+      (click)="prev()">
+      <lucide-icon name="chevron-left" [size]="20"></lucide-icon>
+    </button>
+
+    <!-- cards do slide atual -->
+    <div class="product-grid">
+      <app-product-card
+        *ngFor="let product of visibleProducts"
+        [id]="product.id"
+        [name]="product.name"
+        [brand]="product.brand"
+        [image]="product.image"
+        [originalPrice]="product.originalPrice"
+        [discountPrice]="product.discountPrice"
+        [expiryDays]="product.expiryDays"
+        [stock]="product.stock"
+        [rating]="product.rating"
+        (addToCart)="handleAddToCart($event)">
+      </app-product-card>
+    </div>
+
+    <!-- seta direita -->
+    <button
+      type="button"
+      class="carousel-arrow right"
+      (click)="next()">
+      <lucide-icon name="chevron-right" [size]="20"></lucide-icon>
+    </button>
+  </div>
+
+  <!-- pontinhos do carrossel -->
+  <div class="carousel-dots">
+    <button
+      *ngFor="let i of slides"
+      type="button"
+      class="carousel-dot"
+      [class.active]="i === slideIndex"
+      (click)="goToSlide(i)">
+    </button>
+  </div>
+</section>

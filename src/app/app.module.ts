@@ -28,7 +28,9 @@ import { CategoryChipComponent } from './core/components/category-chip/category-
 import { ProductCardComponent } from './core/components/product-card/product-card.component';
 import { CartDrawerComponent } from './core/components/cart-drawer/cart-drawer.component';
 import { MetricCardComponent } from './core/components/metric-card/metric-card.component';
-import { TemplateModule } from './template/template.module'; 
+import { TemplateModule } from './template/template.module';
+import { ProductCarouselComponent } from './core/components/product-carousel/product-carousel.component';
+import { CadastroComponent } from './cadastro/cadastro.component'; 
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { TemplateModule } from './template/template.module';
     CategoryChipComponent,
     ProductCardComponent,
     CartDrawerComponent,
-    MetricCardComponent, 
+    MetricCardComponent,
+    ProductCarouselComponent,
+    CadastroComponent, 
        
 
   ],

@@ -1,11 +1,19 @@
 
 .container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
+.main-content{
+  background-color: var(--background);
+  width: 100%;
+}
+
 .search-products-wrapper{
   background-color: var(--background);
   width: 100%;
@@ -92,17 +100,177 @@
   scrollbar-width: thin;
 }
 
-.section { margin-top: 2rem; }
+.section {
+  margin: 2rem 0;
+  width: 100%; 
+  background-color: var(--background);
+}
+
+.section.dicas{
+  background-color: var(--vcm-bg-secondary);
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section.descontos{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* em vez de center */
+  justify-content: center;
+  background-color: var(--vcm-gray-50);
+  padding: 2rem 0;
+  padding-inline: 5rem;
+}
+
+.desconto-header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section.descontos h1{
+  color: var(--vcm-gray-700);
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: start;
+}
+
+.descontos-list{
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.descontos-list img, .ofertas-list img{
+  width: 350px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dica{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dica img{
+  width: 80px;
+  height: 80px;
+}
+
+.dicas-info{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 0.5rem;
+  color: var(--background);
+}
+
+.dicas-info p{
+  font-size: 1.25rem;
+  color: var(--vcm-gray-50);
+  margin: 0;
+}
+
 .section-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 1rem;
+}
+
+.section-title{
+  color: var(--vcm-gray-700);
+  font-weight: bold;
+  font-size: 2rem;
 }
 .section-controls {
   display: flex;
   gap: 0.5rem;
 }
+
+.section.ofertas{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* em vez de center */
+  justify-content: center;
+}
+.ofertas-list{
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ofertas-list img{
+  width: 300px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.farmacias-list{
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.farmacias-title{
+  color: var(--vcm-gray-600);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.farmacias-list img{
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Busca (desktop) */
+.search-desktop { display: none; }
+@media (min-width: 768px) {
+  .search-desktop {
+    display: flex;
+    justify-content: center;  
+  }
+}
+
+.search-container { position: relative; width: 95%; }
+.search-icon, .search-icon-mobile {
+  position: absolute; right: 0; left: auto; top: 50%; transform: translateY(-50%);
+  color: var(--vcm-gray-500);
+}
+.search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0 0 .75rem; 
+  border-radius: 12px;
+  background: #fff;
+  color: var(--vcm-gray-900);
+  border: 0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.search-input::placeholder { color: var(--vcm-gray-500); }
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--vcm-primary-600);
+}
+
 .control-button {
   width: 32px;
   height: 32px;
@@ -116,45 +284,19 @@
 }
 .control-button:hover { border-color: var(--vcm-gray-400); }
 
-
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
+  display: flex;
+  /* grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); */
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 @media (min-width: 1024px) {
   .product-grid { gap: 1.5rem; }
 }
 
-
-.pagination {
-  display: flex;
-  gap: .5rem;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem 0;
-}
-.pagination-button {
-  min-width: 36px;
-  height: 36px;
-  padding: 0 .75rem;
-  border-radius: .5rem;
-  border: 1px solid var(--vcm-gray-200);
-  background: #fff;
-  cursor: pointer;
-}
-.pagination-button.active {
-  background: var(--vcm-primary-600);
-  border-color: var(--vcm-primary-600);
-  color: #fff;
-}
-.pagination-button:hover { border-color: var(--vcm-gray-400); }
-
 .category-bar {
   background: var(--background);
-  border-bottom: 1px solid var(--vcm-gray-200);
-  position: sticky;
-  z-index: 99;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -165,5 +307,142 @@
 .category-bar .container {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.section.whatsapp-section {
+  display: flex;
+  justify-content: center;
+}
+
+.whatsapp-banner {
+  width: 80%;
+  background-color: var(--vcm-bg-secondary);
+  border-radius: 24px;
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  color: #ffffff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+}
+
+/* LADO ESQUERDO */
+
+.whatsapp-left {
+  flex: 1.1;
+  min-width: 0;
+}
+
+.whatsapp-title {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 500px;
+}
+
+.whatsapp-input-wrapper {
+  position: relative;
+  max-width: 460px;
+}
+
+.whatsapp-input {
+  width: 100%;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  padding: 0 0 0 1.25rem;
+  background-color: #f4f6fb;
+  color: var(--vcm-gray-900);
+  font-size: 0.95rem;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.whatsapp-input::placeholder {
+  color: var(--vcm-gray-500);
+}
+
+.whatsapp-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.12);
+}
+
+.whatsapp-button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--vcm-green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.35);
+}
+
+.whatsapp-button img {
+  width: 18px;
+  height: 18px;
+}
+
+.whatsapp-button:hover {
+  background-color: var(--vcm-green-secondary);
+}
+
+.whatsapp-terms {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  max-width: 370px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* LADO DIREITO */
+
+.whatsapp-right {
+  flex: 0.9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+
+.whatsapp-doctor {
+  height: auto;
+  width:55%;
+  transform: translateY(-26px);
+  object-fit: contain;
+  position: absolute;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+  .whatsapp-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .whatsapp-left {
+    width: 100%;
+  }
+
+  .whatsapp-title {
+    max-width: none;
+  }
+
+  .whatsapp-input-wrapper,
+  .whatsapp-terms {
+    max-width: none;
+  }
+
 }
 

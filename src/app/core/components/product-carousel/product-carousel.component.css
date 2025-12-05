@@ -1,0 +1,81 @@
+.section {
+  margin: 1.25rem 0;
+  width: 100%;
+  background-color: var(--background);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  color: var(--vcm-gray-700);
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* wrapper do carrossel de produtos */
+.product-carousel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+/* grid de cards */
+.product-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-inline: 24px;
+}
+
+/* setas esquerda/direita */
+.carousel-arrow {
+  width: 45px;
+  height: 45px;
+  border-radius: 999px;
+  border: 1px solid var(--vcm-gray-200);
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease-in-out;
+}
+
+.carousel-arrow:hover {
+  border-color: var(--vcm-gray-400);
+  background: var(--vcm-gray-50);
+}
+
+/* pontinhos abaixo da lista */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: var(--vcm-gray-200);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.carousel-dot.active {
+  width: 20px;
+  background: var(--vcm-primary-600);
+}

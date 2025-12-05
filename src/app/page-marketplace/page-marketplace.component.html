@@ -49,71 +49,145 @@
 </div>
 
 <main class="container main-content">
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Mais comprados</h2>
-      <div class="section-controls">
-        <button class="control-button">
-          <lucide-icon name="chevron-left" [size]="20"></lucide-icon>
-        </button>
-        <button class="control-button">
-          <lucide-icon name="chevron-right" [size]="20"></lucide-icon>
-        </button>
+  <app-product-carousel
+    [title]="'Mais vendidos na VenciMed'"
+    [products]="bestSellerProducts"
+    [slideSize]="4"
+    (addToCart)="onAddToCart($event)">
+  </app-product-carousel>
+
+  <section class="section dicas">
+    <div class="dica">
+      <img src="/assets/icones/cupons.svg" alt="Cupons">
+      <div class="dicas-info">
+        <h2>Cupons Exclusivos</h2>
+        <p>Garanta já o seu!</p>
       </div>
     </div>
-    
-    <div class="product-grid">
-      <app-product-card
-        *ngFor="let product of filteredProducts.slice(0, 4)"
-        [id]="product.id"
-        [name]="product.name"
-        [brand]="product.brand"
-        [image]="product.image"
-        [originalPrice]="product.originalPrice"
-        [discountPrice]="product.discountPrice"
-        [expiryDays]="product.expiryDays"
-        [stock]="product.stock"
-        [rating]="product.rating"
-        (addToCart)="onAddToCart($event)">
-      </app-product-card>
+
+    <div class="dica">
+      <img src="/assets/icones/promocoes.svg" alt="Promoções">
+      <div class="dicas-info">
+        <h2>Promoções imperdíveis</h2>
+        <p>Economize na VenciMed</p>
+      </div>
+    </div>
+    <div class="dica">
+      <img src="/assets/icones/loja.svg" alt="Loja">
+      <div class="dicas-info">
+        <h2>Retire na Loja</h2>
+        <p>Em até 30 minutos</p>
+      </div>
+    </div>
+    <div class="dica">
+      <img src="/assets/icones/pix.svg" alt="Pix">
+      <div class="dicas-info">
+        <h2>Pague Fácil</h2>
+        <p>Com Pix</p>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Melhores descontos</h2>
-      <div class="section-controls">
-        <button class="control-button">
-          <lucide-icon name="chevron-left" [size]="20"></lucide-icon>
-        </button>
-        <button class="control-button">
-          <lucide-icon name="chevron-right" [size]="20"></lucide-icon>
-        </button>
+  <section class="section descontos">
+    <div class="descontos-container">
+      <h1 class="descontos-title">Melhores descontos você encontra aqui</h1>
+
+      <div class="descontos-list">
+        <img src="/assets/imagens/desconto-20.png" alt="Desconto de 20%">
+        <img src="/assets/imagens/desconto-40.png" alt="Desconto de 40%">
+        <img src="/assets/imagens/desconto-60.png" alt="Desconto de 60%">
+        <img src="/assets/imagens/desconto-80.png" alt="Desconto de 80%">
       </div>
-    </div>
-    
-    <div class="product-grid">
-      <app-product-card
-        *ngFor="let product of filteredProducts.slice(4, 8)"
-        [id]="product.id"
-        [name]="product.name"
-        [brand]="product.brand"
-        [image]="product.image"
-        [originalPrice]="product.originalPrice"
-        [discountPrice]="product.discountPrice"
-        [expiryDays]="product.expiryDays"
-        [stock]="product.stock"
-        [rating]="product.rating"
-        (addToCart)="onAddToCart($event)">
-      </app-product-card>
     </div>
   </section>
 
-  <div class="pagination">
-    <button class="pagination-button">Anterior</button>
-    <button class="pagination-button active">1</button>
-    <button class="pagination-button">2</button>
-    <button class="pagination-button">3</button>
-    <button class="pagination-button">Próximo</button>
+  <app-product-carousel
+    [title]="'Economize hoje! 🔥'"
+    [products]="dealsTodayProducts"
+    [slideSize]="4"
+    (addToCart)="onAddToCart($event)">
+  </app-product-carousel>
+
+  <section class="section ofertas">
+    <h1>Oferta especial ⚡</h1>
+    <div class="ofertas-list">
+      <img src="/assets/imagens-de-exemplo/promocao-antialergico.png" alt="Antialérgico">
+      <img src="/assets/imagens-de-exemplo/promocao-fralda.png" alt="Fraldas">
+      <img src="/assets/imagens-de-exemplo/promocao-vitaminas.png" alt="Vitaminas">
+      <img src="/assets/imagens-de-exemplo/promocao-higiene.png" alt="">
+    </div>
+  </section>
+
+  <app-product-carousel
+    [title]="'Mais buscados 🔍'"
+    [products]="mostSearchedProducts"
+    [slideSize]="4"
+    (addToCart)="onAddToCart($event)">
+  </app-product-carousel>
+
+
+  <section class="section descontos">
+    <h2 class="farmacias-title">Farmácias Parceiras</h2>
+    <div class="farmacias-list">
+      <img src="/assets/imagens-de-exemplo/drogasil.png" alt="Drogasil">
+      <img src="/assets/imagens-de-exemplo/raia.png" alt="Raia">
+      <img src="/assets/imagens-de-exemplo/extrafarma.png" alt="Extrafarma">
+      <img src="/assets/imagens-de-exemplo/pague-menos.png" alt="Pague Menos">
+      <img src="/assets/imagens-de-exemplo/sao-joao.png" alt="São João">
+    </div>
+  </section>
+
+  <app-product-carousel
+    [title]="'Cuidados com a pele 💆‍♀️'"
+    [products]="skinCareProducts"
+    [slideSize]="4"
+    (addToCart)="onAddToCart($event)">
+  </app-product-carousel>
+
+
+  <app-product-carousel
+    [title]="'Cuidado Pessoal 🧼'"
+    [products]="personalCareProducts"
+    [slideSize]="4"
+    (addToCart)="onAddToCart($event)">
+  </app-product-carousel>
+
+<section class="section whatsapp-section">
+  <div class="whatsapp-banner">
+    <!-- LADO ESQUERDO: TEXTO + INPUT -->
+    <div class="whatsapp-left">
+      <h2 class="whatsapp-title">
+        Insira seu WhatsApp e fique por<br />
+        dentro dos melhores descontos
+      </h2>
+
+      <div class="whatsapp-input-wrapper">
+        <input
+          type="text"
+          class="whatsapp-input"
+          placeholder="Insira seu WhatsApp"
+          aria-label="Insira seu WhatsApp"
+        />
+        <button type="button" class="whatsapp-button">
+          <!-- pode trocar por lucide-icon se quiser -->
+          <img src="/assets/icones/arrow-right.svg" alt="Enviar" />
+        </button>
+      </div>
+
+      <p class="whatsapp-terms">
+        Ao preencher esse formulário você declara que leu e aceita
+        os Termos de Uso e Política de Privacidade
+      </p>
+    </div>
+
+    <!-- LADO DIREITO: MÉDICA + CARD DO PRODUTO -->
+    <div class="whatsapp-right">
+      <img
+        src="/assets/imagens-de-exemplo/medica.png"
+        alt="Profissional de saúde"
+        class="whatsapp-doctor"
+      />
+    </div>
   </div>
+</section>
 </main>

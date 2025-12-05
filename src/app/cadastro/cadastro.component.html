@@ -1,0 +1,298 @@
+<div class="login-page-container">
+  <!-- LADO ESQUERDO: FORMULÁRIO -->
+  <div class="login-card">
+    <button (click)="handleBackClick()" class="back-button">
+      <img src="/assets/icones/arrow-left.svg" alt="" /> Voltar
+    </button>
+
+    <div class="login-header">
+      <img
+        src="/assets/imagens/vencimed logo 2.svg"
+        alt="Logo VenciMed"
+      />
+      <h1>Criar conta</h1>
+    </div>
+
+    <form
+      #registerForm="ngForm"
+      (ngSubmit)="submit(registerForm)"
+      class="login-form"
+      novalidate
+    >
+      <!-- INDICADOR DE PASSO -->
+      <div class="step-indicator">
+        <span class="step-label">Passo {{ step }} de 2</span>
+        <div class="step-bar">
+          <div class="step-bar-segment" [class.active]="step >= 1"></div>
+          <div class="step-bar-segment" [class.active]="step >= 2"></div>
+        </div>
+      </div>
+
+      <!-- ETAPA 1 ---------------------------------------------------->
+      <ng-container *ngIf="step === 1">
+        <div class="form-field">
+          <label for="cpf">CPF</label>
+          <input
+            id="cpf"
+            type="text"
+            class="form-input"
+            name="cpf"
+            placeholder="Insira seu CPF"
+            [(ngModel)]="cpf"
+            required
+            #cpfInput="ngModel"
+            [class.invalid-input]="
+              cpfInput.invalid && (cpfInput.touched || registerForm.submitted)
+            "
+          />
+          <div
+            *ngIf="
+              cpfInput.invalid && (cpfInput.touched || registerForm.submitted)
+            "
+            class="error-message"
+          >
+            CPF é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="fullName">Nome completo</label>
+          <input
+            id="fullName"
+            type="text"
+            class="form-input"
+            name="fullName"
+            placeholder="Insira seu nome completo"
+            [(ngModel)]="fullName"
+            required
+            #fullNameInput="ngModel"
+            [class.invalid-input]="
+              fullNameInput.invalid &&
+              (fullNameInput.touched || registerForm.submitted)
+            "
+          />
+          <div
+            *ngIf="
+              fullNameInput.invalid &&
+              (fullNameInput.touched || registerForm.submitted)
+            "
+            class="error-message"
+          >
+            Nome é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="birthDate">Data de nascimento</label>
+            <input
+              id="birthDate"
+              type="date"
+              class="form-input"
+              name="birthDate"
+              [(ngModel)]="birthDate"
+              required
+              #birthDateInput="ngModel"
+              [class.invalid-input]="
+                birthDateInput.invalid &&
+                (birthDateInput.touched || registerForm.submitted)
+              "
+            />
+            <div
+              *ngIf="
+                birthDateInput.invalid &&
+                (birthDateInput.touched || registerForm.submitted)
+              "
+              class="error-message"
+            >
+              Data de nascimento é obrigatória.
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="gender">Gênero</label>
+            <select
+              id="gender"
+              class="form-input select-input"
+              name="gender"
+              [(ngModel)]="gender"
+              required
+              #genderInput="ngModel"
+              [class.invalid-input]="
+                genderInput.invalid &&
+                (genderInput.touched || registerForm.submitted)
+              "
+            >
+              <option value="" disabled selected>Selecionar</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Outro">Outro</option>
+              <option value="Prefiro não informar">
+                Prefiro não informar
+              </option>
+            </select>
+            <div
+              *ngIf="
+                genderInput.invalid &&
+                (genderInput.touched || registerForm.submitted)
+              "
+              class="error-message"
+            >
+              Gênero é obrigatório.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="phone">Telefone</label>
+          <input
+            id="phone"
+            type="tel"
+            class="form-input"
+            name="phone"
+            placeholder="(00) 00000-0000"
+            [(ngModel)]="phone"
+            required
+            #phoneInput="ngModel"
+            [class.invalid-input]="
+              phoneInput.invalid && (phoneInput.touched || registerForm.submitted)
+            "
+          />
+          <div
+            *ngIf="
+              phoneInput.invalid && (phoneInput.touched || registerForm.submitted)
+            "
+            class="error-message"
+          >
+            Telefone é obrigatório.
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="submit-button register-next-button"
+          (click)="nextStep(registerForm)"
+        >
+          Próximo
+        </button>
+
+        <div class="register-redirect">
+          <p>Já possui uma conta?</p>
+          <button type="button" class="link-button" (click)="goToLogin()">
+            Entrar agora
+          </button>
+        </div>
+      </ng-container>
+
+      <!-- ETAPA 2 ---------------------------------------------------->
+      <ng-container *ngIf="step === 2">
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            class="form-input"
+            name="email"
+            placeholder="Insira seu e-mail"
+            [(ngModel)]="email"
+            required
+            email
+            #emailInput="ngModel"
+            [class.invalid-input]="
+              emailInput.invalid && (emailInput.touched || registerForm.submitted)
+            "
+          />
+          <div
+            *ngIf="
+              emailInput.invalid && (emailInput.touched || registerForm.submitted)
+            "
+            class="error-message"
+          >
+            <div *ngIf="emailInput.errors?.['required']">
+              E-mail é obrigatório.
+            </div>
+            <div *ngIf="emailInput.errors?.['email']">
+              Formato de e-mail inválido.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Senha</label>
+          <div class="input-icon-wrapper">
+            <input
+              id="password"
+              [type]="passwordFieldType"
+              class="form-input"
+              name="password"
+              placeholder="••••••••"
+              [(ngModel)]="password"
+              required
+              minlength="4"
+              #passwordInput="ngModel"
+              [class.invalid-input]="
+                passwordInput.invalid &&
+                (passwordInput.touched || registerForm.submitted)
+              "
+            />
+            <button
+              type="button"
+              (click)="togglePasswordVisibility()"
+              class="eye-button"
+              tabindex="-1"
+            >
+              <i
+                [class]="
+                  passwordFieldType === 'password'
+                    ? 'bi bi-eye'
+                    : 'bi bi-eye-slash'
+                "
+              ></i>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              passwordInput.invalid &&
+              (passwordInput.touched || registerForm.submitted)
+            "
+            class="error-message"
+          >
+            <div *ngIf="passwordInput.errors?.['required']">
+              Senha é obrigatória.
+            </div>
+            <div *ngIf="passwordInput.errors?.['minlength']">
+              A senha deve ter pelo menos 4 caracteres.
+            </div>
+          </div>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="outline-button" (click)="previousStep()">
+            Voltar
+          </button>
+
+          <button
+            type="submit"
+            class="submit-button register-submit-button"
+          >
+            Finalizar cadastro
+          </button>
+        </div>
+
+        <div class="register-redirect">
+          <p>Já possui uma conta?</p>
+          <button type="button" class="link-button" (click)="goToLogin()">
+            Entrar agora
+          </button>
+        </div>
+      </ng-container>
+    </form>
+  </div>
+
+  <!-- LADO DIREITO: IMAGEM -->
+  <div class="image-section">
+    <div class="text-image">
+      <h1>Economia para você, menos resíduos para o planeta.</h1>
+    </div>
+  </div>
+</div>
