@@ -92,7 +92,6 @@
   border-color: var(--vcm-primary-600);
 }
 
-
 .category-scroll {
   display: flex;
   gap: .5rem;
@@ -109,10 +108,24 @@
 .section.dicas{
   background-color: var(--vcm-bg-secondary);
   padding: 2rem 0;
+  overflow: hidden;
+}
+
+.dicas-track {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 2rem;
+  width: max-content;            
+  animation: dicas-scroll 25s linear infinite;
+}
+
+@keyframes dicas-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .section.descontos{
@@ -158,10 +171,11 @@
 
 .dica{
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;        
+  padding: 0.5rem 1rem;
 }
 
 .dica img{
