@@ -327,3 +327,169 @@ body.mat-typography {
 .link-button:hover {
   text-decoration: underline;
 }
+
+/* === RESPONSIVIDADE (mesmo padrão da tela de login) ================== */
+
+/* 1366px ↓ – ajuste leve de padding geral */
+@media (max-width: 1366px) {
+  :host {
+    padding: 0.5rem;
+  }
+}
+
+/* 1280px ↓ – reduz um pouco logo, textos e padding do card */
+@media (max-width: 1280px) {
+  .login-card {
+    padding: 1rem 2.5rem;
+  }
+
+  .login-header img {
+    width: 280px;
+  }
+
+  .login-header h1 {
+    font-size: 28px;
+  }
+
+  .text-image {
+    font-size: 1.2rem;
+  }
+}
+
+/* 1024px ↓ – notebooks / tablets em modo paisagem */
+@media (max-width: 1024px) {
+  :host {
+    padding: 0.5rem;
+  }
+
+  .login-page-container {
+    gap: 1.5rem;
+  }
+
+  .login-card {
+    padding: 1rem 2rem;
+  }
+
+  .login-header {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+}
+
+/* 768px ↓ – tablet em pé / celulares grandes
+   (some a imagem e o card fica centralizado) */
+@media (max-width: 768px) {
+  .login-page-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 1.5rem;
+  }
+
+  .image-section {
+    display: none;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 24px;
+    padding: 1.5rem 1.75rem;
+  }
+
+  .login-header img {
+    width: 240px;
+  }
+
+  .login-header h1 {
+    font-size: 26px;
+  }
+
+  .back-button {
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+
+  /* Data + gênero vira coluna em telas menores */
+  .form-row {
+    flex-direction: column;
+  }
+
+  .actions-row {
+    gap: 0.75rem;
+  }
+}
+
+/* 480px ↓ – celulares médios */
+@media (max-width: 480px) {
+  :host {
+    padding: 0;
+  }
+
+  .login-page-container {
+    min-height: 100vh;
+  }
+
+  .login-card {
+    border-radius: 0;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .login-header {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    gap: 16px;
+  }
+
+  .login-header img {
+    width: 210px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;
+  }
+
+  .form-field label {
+    font-size: 0.95rem;
+  }
+
+  .form-input {
+    height: 42px;
+    font-size: 0.85rem;
+  }
+
+  .submit-button {
+    height: 44px;
+    font-size: 1rem;
+    padding: 0 16px;
+  }
+
+  .register-redirect {
+    font-size: 0.9rem;
+  }
+
+  .actions-row {
+    flex-direction: column;
+  }
+}
+
+/* 375px ↓ – iPhone SE / telas bem estreitas */
+@media (max-width: 375px) {
+  .login-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .login-header img {
+    width: 190px;
+  }
+
+  .login-header h1 {
+    font-size: 22px;
+  }
+
+  .back-button {
+    font-size: 0.9rem;
+  }
+}
