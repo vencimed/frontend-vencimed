@@ -17,6 +17,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxMaskModule } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
 import { LucideAngularModule, ShoppingCart, User, Search, ChevronLeft, 
   ChevronRight, Plus, Minus, Eye, X, Trash2, Clock, LayoutDashboard, Package, BarChart3, Settings, Users, 
@@ -68,7 +69,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatIconModule,
     MatListModule,
     NgApexchartsModule,
-    
+    NgxMaskModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-top-right',
