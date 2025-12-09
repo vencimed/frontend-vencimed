@@ -38,6 +38,7 @@
             class="form-input"
             name="cpf"
             placeholder="Insira seu CPF"
+            mask="000.000.000-00"
             [(ngModel)]="cpf"
             required
             #cpfInput="ngModel"
@@ -151,6 +152,7 @@
             class="form-input"
             name="phone"
             placeholder="(00) 00000-0000"
+            mask="(00) 00000-0000"
             [(ngModel)]="phone"
             required
             #phoneInput="ngModel"

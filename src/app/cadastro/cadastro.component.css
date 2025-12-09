@@ -177,10 +177,30 @@ body.mat-typography {
   height: 4px;
   border-radius: 999px;
   background-color: var(--vcm-gray-100);
+  position: relative;
+  overflow: hidden;
 }
 
-.step-bar-segment.active {
-  background-color: var(--vcm-bg-secondary);
+.step-bar-segment::after {
+  content: '';
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background-color: var(--vcm-bg-secondary); /* verde da barra */
+  transform-origin: left center;
+  transform: scaleX(0);              /* começa vazio */
+}
+
+.step-bar-segment.active::after {
+  animation: stepFill 0.8s ease forwards;
+}
+
+@keyframes stepFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* Linha data + gênero */
@@ -231,14 +251,13 @@ body.mat-typography {
 
 .outline-button {
   width: 100%;
-  height: 44px;
   padding: 0 16px;
   border-radius: 50px;
   border: 1px solid var(--vcm-green-primary);
   background: #ffffff;
   color: var(--vcm-green-primary);
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 

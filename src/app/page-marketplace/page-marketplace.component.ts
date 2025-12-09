@@ -24,7 +24,36 @@ export class PageMarketplaceComponent implements OnInit {
   
   public selectedCategory: string | null = null;
   
-  
+    // DICAS DO MARQUEE
+  tips = [
+    {
+      icon: '/assets/icones/cupons.svg',
+      alt: 'Cupons',
+      title: 'Cupons Exclusivos',
+      subtitle: 'Garanta já o seu!'
+    },
+    {
+      icon: '/assets/icones/promocoes.svg',
+      alt: 'Promoções',
+      title: 'Promoções imperdíveis',
+      subtitle: 'Economize na VenciMed'
+    },
+    {
+      icon: '/assets/icones/loja.svg',
+      alt: 'Loja',
+      title: 'Retire na Loja',
+      subtitle: 'Em até 30 minutos'
+    },
+    {
+      icon: '/assets/icones/pix.svg',
+      alt: 'Pix',
+      title: 'Pague Fácil',
+      subtitle: 'Com Pix'
+    }
+  ];
+
+  // quantas cópias do bloco você quer no “trilho”
+  repeats = [0, 1]; // 2 vezes
   
   public bestSellerProducts: Product[] = [];
   public dealsTodayProducts: Product[] = [];

@@ -57,34 +57,18 @@
   </app-product-carousel>
 
   <section class="section dicas">
-    <div class="dica">
-      <img src="/assets/icones/cupons.svg" alt="Cupons">
-      <div class="dicas-info">
-        <h2>Cupons Exclusivos</h2>
-        <p>Garanta já o seu!</p>
-      </div>
-    </div>
-
-    <div class="dica">
-      <img src="/assets/icones/promocoes.svg" alt="Promoções">
-      <div class="dicas-info">
-        <h2>Promoções imperdíveis</h2>
-        <p>Economize na VenciMed</p>
-      </div>
-    </div>
-    <div class="dica">
-      <img src="/assets/icones/loja.svg" alt="Loja">
-      <div class="dicas-info">
-        <h2>Retire na Loja</h2>
-        <p>Em até 30 minutos</p>
-      </div>
-    </div>
-    <div class="dica">
-      <img src="/assets/icones/pix.svg" alt="Pix">
-      <div class="dicas-info">
-        <h2>Pague Fácil</h2>
-        <p>Com Pix</p>
-      </div>
+    <div class="dicas-track">
+      <!-- repete o bloco de dicas N vezes -->
+      <ng-container *ngFor="let _ of repeats">
+        <!-- lista de dicas -->
+        <div class="dica" *ngFor="let tip of tips">
+          <img [src]="tip.icon" [alt]="tip.alt" />
+          <div class="dicas-info">
+            <h2>{{ tip.title }}</h2>
+            <p>{{ tip.subtitle }}</p>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </section>
 
