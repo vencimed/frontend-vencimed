@@ -30,9 +30,10 @@
 .product-grid {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   gap: 1.5rem;
   margin-inline: 24px;
+  box-sizing: border-box;
 }
 
 /* setas esquerda/direita */
@@ -78,4 +79,21 @@
 .carousel-dot.active {
   width: 20px;
   background: var(--vcm-primary-600);
+}
+
+@media (max-width: 640px) {
+  .section-title{
+    text-align: center;
+  }
+
+  .product-grid {
+    gap: 0.5rem;
+    margin-inline: 0;
+  }
+
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    /* Opcional: posicionamento absoluto para economizar espaço lateral */
+  }
 }
