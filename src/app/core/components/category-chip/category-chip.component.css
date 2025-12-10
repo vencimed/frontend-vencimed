@@ -1,5 +1,6 @@
 :host {
   display: inline-block;
+  flex-shrink: 0;
 }
 
 /* Botão em si */
@@ -10,6 +11,7 @@
   padding: 0.5rem 0.75rem;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
+  min-width: min-content;
 }
 
 /* Conteúdo em coluna: ícone em cima, label embaixo */
@@ -25,6 +27,7 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
+  transition: width 0.2s, height 0.2s; /* Animação suave na troca de tamanho */
 }
 
 /* Label */
@@ -50,4 +53,30 @@
 .chip-button.selected .chip-label {
   color: var(--vcm-primary-800);
   font-weight: 600;
+}
+
+
+/* --- RESPONSIVIDADE (Adicione isso ao final) --- */
+@media (max-width: 856px) {
+  /* Diminui o padding do botão */
+  .chip-button {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+  }
+
+  /* Reduz drasticamente o ícone para mobile */
+  .chip-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Ajusta o espaçamento interno */
+  .chip-content {
+    gap: 0.25rem;
+  }
+
+  /* Diminui levemente a fonte */
+  .chip-label {
+    font-size: 0.7rem;
+  }
 }

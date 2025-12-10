@@ -1,8 +1,5 @@
 <app-hero-section></app-hero-section>
 
-<section class="main-content">
-
-</section>
 <div class="search-products-wrapper">
   <div class="search-products-container">
     <h1 class="search-products-title">Buscar Produtos</h1>
@@ -13,18 +10,21 @@
       class="search-input"
       aria-label="Pesquisar"
     />
-  
-    <select class="hero-select">
-      <option value="">Validade</option>
-    </select>
-  
-    <select class="hero-select">
-      <option value="">Estados</option>
-      <option value="CE">Ceará</option>
-      <option value="SP">São Paulo</option>
-      <option value="RJ">Rio de Janeiro</option>
-      <option value="MG">Minas Gerais</option>
-    </select>
+
+    
+    <div class="hero-selects">
+      <select class="hero-select">
+        <option value="">Validade</option>
+      </select>
+    
+      <select class="hero-select">
+        <option value="">Estados</option>
+        <option value="CE">Ceará</option>
+        <option value="SP">São Paulo</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="MG">Minas Gerais</option>
+      </select>
+    </div>
   
     <button class="button-primary">Buscar <img src="/assets/icones/arrow-right.svg" alt="Seta direita"></button>
   </div>
@@ -52,7 +52,7 @@
   <app-product-carousel
     [title]="'Mais vendidos na VenciMed'"
     [products]="bestSellerProducts"
-    [slideSize]="4"
+    [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 
@@ -88,7 +88,7 @@
   <app-product-carousel
     [title]="'Economize hoje! 🔥'"
     [products]="dealsTodayProducts"
-    [slideSize]="4"
+    [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 
@@ -105,7 +105,7 @@
   <app-product-carousel
     [title]="'Mais buscados 🔍'"
     [products]="mostSearchedProducts"
-    [slideSize]="4"
+    [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 
@@ -124,7 +124,7 @@
   <app-product-carousel
     [title]="'Cuidados com a pele 💆‍♀️'"
     [products]="skinCareProducts"
-    [slideSize]="4"
+    [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 
@@ -132,7 +132,7 @@
   <app-product-carousel
     [title]="'Cuidado Pessoal 🧼'"
     [products]="personalCareProducts"
-    [slideSize]="4"
+    [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 

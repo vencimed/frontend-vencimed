@@ -12,6 +12,7 @@ export class MarketplaceNavbarComponent implements OnInit {
 
   public cartItemCount$!: Observable<number>;
   public subTotal$!: Observable<number>;
+  public isSidebarOpen: boolean = false;
 
   constructor(private cartService: CartService) { }
 
@@ -27,6 +28,14 @@ export class MarketplaceNavbarComponent implements OnInit {
   }
 
 
+  toggleSidebar(force?: boolean): void {
+    if (typeof force === 'boolean') {
+      this.isSidebarOpen = force;
+    } else {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    }
+  }
+  
   onSearchChange(event: any): void {
     const query = event.target.value;
     console.log('Busca:', query); 

@@ -21,7 +21,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
 import { LucideAngularModule, ShoppingCart, User, Search, ChevronLeft, 
   ChevronRight, Plus, Minus, Eye, X, Trash2, Clock, LayoutDashboard, Package, BarChart3, Settings, Users, 
-  FileText, TrendingUp, AlertCircle, Download, Phone, Mail, MapPin } from 'lucide-angular';
+  FileText, TrendingUp, AlertCircle, Download, Phone, Mail, MapPin, 
+  Menu} from 'lucide-angular';
 import { MarketplaceNavbarComponent } from './core/components/marketplace-navbar/marketplace-navbar.component';
 import { MarketplaceFooterComponent } from './core/components/marketplace-footer/marketplace-footer.component';
 import { HeroSectionComponent } from './core/components/hero-section/hero-section.component';
@@ -79,7 +80,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     LucideAngularModule.pick({
       ShoppingCart, User, Search, ChevronLeft, ChevronRight, Plus, Minus, Eye, X, Trash2, Clock, 
       LayoutDashboard, Package, BarChart3, Settings, Users, FileText, TrendingUp, 
-      AlertCircle, Download, Phone, Mail, MapPin
+      AlertCircle, Download, Phone, Mail, MapPin, Menu
     })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 

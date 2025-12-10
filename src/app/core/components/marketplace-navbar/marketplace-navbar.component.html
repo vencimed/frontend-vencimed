@@ -3,13 +3,22 @@
 
   <div class="navbar-container">
     <div class="navbar-content">
+      <!-- Botão sidebar (aparece abaixo de 1280px) -->
+      <button
+        class="sidebar-toggle"
+        type="button"
+        (click)="toggleSidebar()"
+        aria-label="Abrir menu"
+      >
+        <lucide-icon name="menu" [size]="24"></lucide-icon>
+      </button>
 
       <!-- Logo -->
       <div class="logo-wrapper">
-        <img src="/assets/imagens/vencimed logo 2.svg" alt="logo VenciMed">
-
+        <img src="/assets/icones/Logo-vencimed.svg" alt="logo VenciMed">
       </div>
 
+      <!-- Busca desktop (só >= 1280px) -->
       <div class="search-desktop">
         <div class="search-container">
           <input
@@ -25,6 +34,7 @@
 
       <!-- Ações -->
       <div class="actions-wrapper">
+
         <button class="map-location" type="button">
           <lucide-icon name="map-pin" [size]="30" aria-hidden="true"></lucide-icon>
           <div class="location-text">
@@ -32,6 +42,8 @@
             <p class="cep-user">Insira seu CEP</p>
           </div>
         </button>
+
+
         <button class="profile-desktop" type="button" >
           <!-- <lucide-icon name="user" [size]="20" aria-hidden="true"></lucide-icon> -->
           <img src="/assets/icones/user-icon.svg" alt="User">
@@ -52,7 +64,6 @@
         <button (click)="onCartClick()" class="cart-button" type="button" aria-label="Minha Cesta">
           <div class="cart-icon-wrapper">
             <img src="/assets/icones/cesta.svg" alt="Cesta">
-            <!-- <lucide-icon name="shopping-cart" [size]="24" aria-hidden="true"></lucide-icon> -->
             <ng-container *ngIf="(cartItemCount$ | async) as count">
               <span *ngIf="count > 0" class="cart-badge">
                 {{ count > 9 ? '9+' : count }}
@@ -87,4 +98,47 @@
       </div>
     </div>
   </div>
+
+    <!-- Sidebar (login/cadastro + localização) -->
+  <div
+    class="sidebar-backdrop"
+    *ngIf="isSidebarOpen"
+    (click)="toggleSidebar()"
+  ></div>
+
+  <aside class="sidebar" [class.open]="isSidebarOpen">
+    <div class="sidebar-header">
+      <span class="sidebar-title">Menu</span>
+      <button
+        class="sidebar-close"
+        type="button"
+        (click)="toggleSidebar()"
+        aria-label="Fechar menu"
+      >
+        <lucide-icon name="x" [size]="20"></lucide-icon>
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+      <button class="sidebar-item" type="button">
+        <lucide-icon name="user" [size]="24"></lucide-icon>
+        <div class="profile-text">
+          <p>Olá, Bem-vindo!</p>
+          <div class="options-user">
+            <p class="profile-login" routerLink="/login">Entrar</p>
+            <p>ou</p>
+            <p class="profile-login" routerLink="/cadastro">Cadastrar</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="sidebar-item" type="button">
+        <lucide-icon name="map-pin" [size]="24"></lucide-icon>
+        <div class="location-text">
+          <p>Retirar em</p>
+          <p class="cep-user">Insira seu CEP</p>
+        </div>
+      </button>
+    </div>
+  </aside>
 </nav>
