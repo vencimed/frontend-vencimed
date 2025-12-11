@@ -120,10 +120,11 @@
   gap: 0.75rem; /* space-y-3 */
   font-size: 0.875rem; /* text-sm */
   color: var(--vcm-primary-100);
+  align-items: center;
 }
 .contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem; /* gap-2 */
 }
 .contact-icon {
