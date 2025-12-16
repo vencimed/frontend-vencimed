@@ -21,11 +21,11 @@
 
     <div class="price-wrapper">
       <p class="original-price">
-        R$ {{ originalPrice.toFixed(2) }}
+        {{ originalPrice | currency:'BRL':'symbol':'1.2-2' }}
       </p>
       <div class="price-discount-wrapper">
         <span class="discount-price">
-          R$ {{ discountPrice.toFixed(2) }}
+          {{ discountPrice | currency:'BRL':'symbol':'1.2-2' }}
         </span>
         <span class="discount-badge">
           <img src="/assets/icones/arrow-down.svg" alt="Arrow Down">{{ discount }}%
