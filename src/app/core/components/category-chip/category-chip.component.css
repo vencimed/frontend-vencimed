@@ -24,15 +24,15 @@
 
 /* Ícone da categoria */
 .chip-icon {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   transition: width 0.2s, height 0.2s; /* Animação suave na troca de tamanho */
 }
 
 /* Label */
 .chip-label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--vcm-gray-700);
   white-space: nowrap;
@@ -57,7 +57,7 @@
 
 
 /* --- RESPONSIVIDADE (Adicione isso ao final) --- */
-@media (max-width: 856px) {
+@media (max-width: 1210px) {
   /* Diminui o padding do botão */
   .chip-button {
     padding: 0.25rem 0.5rem;
