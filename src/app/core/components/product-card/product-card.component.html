@@ -9,6 +9,10 @@
   </div>
 
   <div class="content-wrapper">
+    <div class="stock-info">
+      <span  class="expiry-badge" [ngClass]="getExpiryClass(expiryDays)">Vence em {{ expiryDays }} dias</span>
+      <!-- <span>Estoque {{ stock }}</span> -->
+    </div>
     <div>
       <!-- <p class="brand">{{ brand }}</p> -->
       <h3 class="name">{{ name }}</h3>
@@ -58,9 +62,6 @@
         </button>
       </div>
     </div>
-    <div class="stock-info">
-      <span>Validade: {{ expiryDays }} dias</span>
-      <!-- <span>Estoque {{ stock }}</span> -->
-    </div>
+
   </div>
 </div>

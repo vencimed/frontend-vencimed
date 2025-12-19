@@ -134,7 +134,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/calcio.png',
     originalPrice: 247.93,
     discountPrice: 185.95,
-    expiryDays: 90,
+    expiryDays: 60,
     stock: 60,
     rating: 4.9,
     category: 'Vitaminas'
@@ -158,7 +158,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/benpatriz.png',
     originalPrice: 27.37,
     discountPrice: 12.79,
-    expiryDays: 90,
+    expiryDays: 5,
     stock: 80,
     rating: 4.8,
     category: 'Infantil'
@@ -170,11 +170,11 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/antialergico.png',
     originalPrice: 91.05,
     discountPrice: 65.99,
-    expiryDays: 90,
+    expiryDays: 30,
     stock: 70,
     rating: 4.6,
     category: 'Infantil'
-  },  // ECONOMIZE HOJE 🔥
+  },
   {
     id: '13',
     name: 'Cálcio Addera Cal 2.000UI MDK 90 comprimidos',
@@ -182,7 +182,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/calcio2.png',
     originalPrice: 247.93,
     discountPrice: 185.95,
-    expiryDays: 90,
+    expiryDays: 60,
     stock: 60,
     rating: 4.9,
     category: 'Vitaminas'
@@ -194,7 +194,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/sabonete.png', 
     originalPrice: 43.49,
     discountPrice: 26.99,
-    expiryDays: 90,
+    expiryDays: 25,
     stock: 95,
     rating: 4.7,
     category: 'Mamães e Bebês'
@@ -206,7 +206,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/dorflex.png', 
     originalPrice: 30.34,
     discountPrice: 20.99,
-    expiryDays: 90,
+    expiryDays: 14,
     stock: 150,
     rating: 4.8,
     category: 'Medicamentos e Saúde'
@@ -242,7 +242,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/flanax.png',
     originalPrice: 28.98,
     discountPrice: 19.90,
-    expiryDays: 90,
+    expiryDays: 35,
     stock: 90,
     rating: 4.8,
     category: 'Analgésicos'
@@ -254,7 +254,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/baristar.png', 
     originalPrice: 168.50,
     discountPrice: 109.90,
-    expiryDays: 90,
+    expiryDays: 30,
     stock: 60,
     rating: 4.6,
     category: 'Medicamentos e Saúde'
@@ -266,7 +266,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/vitamina-c.png', 
     originalPrice: 20.83,
     discountPrice: 7.42,
-    expiryDays: 90,
+    expiryDays: 5,
     stock: 120,
     rating: 4.9,
     category: 'Vitaminas'
@@ -290,7 +290,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/protetor-solar.png', 
     originalPrice: 69.90,
     discountPrice: 39.90,
-    expiryDays: 90,
+    expiryDays: 60,
     stock: 80,
     rating: 4.9,
     category: 'Pele e Beleza'
@@ -302,7 +302,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/roll-on.png', 
     originalPrice: 114.90,
     discountPrice: 85.90,
-    expiryDays: 90,
+    expiryDays: 10,
     stock: 70,
     rating: 4.7,
     category: 'Higiene Pessoal'
@@ -326,7 +326,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/hidratante.png',
     originalPrice: 34.90,
     discountPrice: 19.90,
-    expiryDays: 90,
+    expiryDays: 30,
     stock: 80,
     rating: 4.7,
     category: 'Higiene Pessoal'
@@ -338,7 +338,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/cicatricure.png', 
     originalPrice: 54.90,
     discountPrice: 29.90,
-    expiryDays: 90,
+    expiryDays: 45,
     stock: 70,
     rating: 4.8,
     category: 'Pele e Beleza'
@@ -350,7 +350,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: '/assets/imagens-de-exemplo/teste-gravidez.png', 
     originalPrice: 8.98,
     discountPrice: 7.98,
-    expiryDays: 90,
+    expiryDays: 65,
     stock: 120,
     rating: 4.5,
     category: 'Medicamentos e Saúde'

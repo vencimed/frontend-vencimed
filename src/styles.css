@@ -24,17 +24,22 @@
   --vcm-green-50: #D6FCC1;
   --vcm-green-primary: #247F78;
   --vcm-green-secondary: #37B3AA;
+  --vcm-green-info: #3B5924;
+  --vcm-green-info-bg: #80BA5320;
   
   --vcm-warn-500: #F59E0B;
-  --vcm-warn-bg: #FEF3C7;
+  --vcm-warn: #B8841C;
+  --vcm-warn-bg: #D0952015;
   
   --vcm-error-500: #EF4444;
   --vcm-error-hover: #ff1a1a;
   --vcm-error-bg: #FEE2E2;
-  
+  --vcm-danger: #D04E34;
+  --vcm-danger-bg: #D04E3415;
+
   --vcm-info-500: #3B82F6;
   --vcm-info: #2096D0;
-  --vcm-info-bg: #DBEAFE;
+  --vcm-info-bg: #2095d015;
   
   --vcm-gray-900: #0F172A;
   --vcm-gray-700: #374151;
