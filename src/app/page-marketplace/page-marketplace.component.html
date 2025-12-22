@@ -1,6 +1,6 @@
-<app-hero-section></app-hero-section>
 
-<div class="search-products-wrapper">
+
+<!-- <div class="search-products-wrapper">
   <div class="search-products-container">
     <h1 class="search-products-title">Buscar Produtos</h1>
     <input
@@ -28,7 +28,7 @@
   
     <button class="button-primary">Buscar <img src="/assets/icones/arrow-right.svg" alt="Seta direita"></button>
   </div>
-</div>
+</div> -->
 
 
 <div class="category-bar">
@@ -47,6 +47,8 @@
     </div>
   </div>
 </div>
+
+<app-hero-section></app-hero-section>
 
 <main class="container main-content">
   <app-product-carousel
@@ -86,14 +88,14 @@
   </section>
 
   <app-product-carousel
-    [title]="'Economize hoje! 🔥'"
+    [title]="'Economize hoje!'"
     [products]="dealsTodayProducts"
     [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 
   <section class="section ofertas">
-    <h1>Oferta especial ⚡</h1>
+    <h1>Oferta especial</h1>
     <div class="ofertas-list">
       <img src="/assets/imagens-de-exemplo/promocao-antialergico.png" alt="Antialérgico">
       <img src="/assets/imagens-de-exemplo/promocao-fralda.png" alt="Fraldas">
@@ -103,14 +105,14 @@
   </section>
 
   <app-product-carousel
-    [title]="'Mais buscados 🔍'"
+    [title]="'Mais buscados'"
     [products]="mostSearchedProducts"
     [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
   </app-product-carousel>
 
 
-  <section class="section descontos">
+  <section class="section farmacias">
     <h2 class="farmacias-title">Farmácias Parceiras</h2>
     <div class="farmacias-list">
       <img src="/assets/imagens-de-exemplo/drogasil.png" alt="Drogasil">
@@ -122,7 +124,7 @@
   </section>
 
   <app-product-carousel
-    [title]="'Cuidados com a pele 💆‍♀️'"
+    [title]="'Cuidados com a pele'"
     [products]="skinCareProducts"
     [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
@@ -130,7 +132,7 @@
 
 
   <app-product-carousel
-    [title]="'Cuidado Pessoal 🧼'"
+    [title]="'Cuidado Pessoal'"
     [products]="personalCareProducts"
     [defaultSlideSize]="4"
     (addToCart)="onAddToCart($event)">
@@ -153,7 +155,6 @@
           aria-label="Insira seu WhatsApp"
         />
         <button type="button" class="whatsapp-button">
-          <!-- pode trocar por lucide-icon se quiser -->
           <img src="/assets/icones/arrow-right.svg" alt="Enviar" />
         </button>
       </div>

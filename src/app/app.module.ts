@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +33,9 @@ import { MetricCardComponent } from './core/components/metric-card/metric-card.c
 import { TemplateModule } from './template/template.module';
 import { ProductCarouselComponent } from './core/components/product-carousel/product-carousel.component';
 import { CadastroComponent } from './cadastro/cadastro.component'; 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -86,7 +89,9 @@ import { CadastroComponent } from './cadastro/cadastro.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   
 
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
 
 
   bootstrap: [AppComponent] 

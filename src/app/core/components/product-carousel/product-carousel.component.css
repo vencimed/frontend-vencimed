@@ -81,6 +81,19 @@
   background: var(--vcm-primary-600);
 }
 
+@media (max-width: 840px) {
+  .section{
+    margin: 1rem 0;
+  }
+  .section-header{
+    margin: 1.5rem 0;
+  }
+
+  .section-title{
+    margin: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .section-title{
     text-align: center;
@@ -94,6 +107,5 @@
   .carousel-arrow {
     width: 35px;
     height: 35px;
-    /* Opcional: posicionamento absoluto para economizar espaço lateral */
   }
 }

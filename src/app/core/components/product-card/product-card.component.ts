@@ -66,4 +66,12 @@ export class ProductCardComponent {
       this.addToCart.emit({ id: this.id, quantity: newQty });
     }
   }
+  getExpiryClass(days: number): string {
+    if (days >= 60) return 'expiry-green';
+    if (days > 30) return 'expiry-blue';
+    if (days <= 10) return 'expiry-red';
+    if (days <= 30) return 'expiry-yellow'; 
+    return 'expiry-neutral'; 
+  }
+
 }

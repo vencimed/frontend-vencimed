@@ -1,7 +1,6 @@
 :host {
   display: block;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  padding-top: var(--navbar-total-height);
+  /* padding-top: var(--navbar-total-height); */
 }
 
 .hero-bg {
@@ -291,7 +290,7 @@
 } */
 
 .hero-marketplace {
-  background: var(--vcm-green-primary);
+  background: var(--background);
   color: #ffffff;
   width: 100%;
   height: auto;
@@ -299,6 +298,7 @@
 
 /* Container do carrossel */
 .hero-carousel {
+  display: block;
   width: 100%;
   margin: 0;          /* tira centralização com auto */
   padding: 0;         /* sem padding lateral */
@@ -313,7 +313,7 @@
 .hero-carousel-wrapper {
   position: relative;
   overflow: hidden;
-  background: #0f172a;
+  background: var(--background);
 }
 
 /* Slides */
@@ -324,6 +324,7 @@
   pointer-events: none;
   transition: opacity 0.4s ease-in-out;
   display: none; /* some quando não está ativo */
+  margin-inline: 100px;
 }
 
 .hero-slide.active {
@@ -337,6 +338,7 @@
   width: 100%;
   height: auto;         /* deixa a altura proporcional */
   object-fit: contain;  /* garante que a imagem apareça inteira */
+  border-radius: 20px;
 }
 
 .hero-dots {
@@ -368,5 +370,12 @@
 
 .hero-dot:hover {
   background: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 872px) {
+  .hero-slide {
+    margin-inline: 20px;
+    transition: margin-inline 0.3s ease-in-out;
+  }
 }
 

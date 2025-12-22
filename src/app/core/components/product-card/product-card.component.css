@@ -116,9 +116,46 @@
   display: flex;
   align-items: center;
   gap: 1rem; 
-  font-size: 1rem; 
+  font-size: .75rem; 
   color: var(--vcm-gray-500);
 }
+
+.expiry-badge{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid transparent;
+  font-size: .75rem; 
+}
+
+.expiry-red{
+  color: var(--vcm-danger);
+  background: var(--vcm-danger-bg);
+}
+
+.expiry-yellow{
+  color: var(--vcm-warn);
+  background: var(--vcm-warn-bg);
+}
+
+.expiry-blue{
+  color: var(--vcm-info);
+  background: var(--vcm-info-bg);
+}
+
+.expiry-green{
+  color: var(--vcm-green-info);
+  background: var(--vcm-green-info-bg);
+}
+
+.expiry-neutral{
+  color: var(--vcm-gray-700);
+  background: var(--vcm-gray-50);
+}
+
 
 .image-container {
   position: relative;
