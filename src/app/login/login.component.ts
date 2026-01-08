@@ -31,7 +31,7 @@ export class LoginComponent {
 
     
     console.log('Login:', this.email, this.password);
-    this.router.navigate(['/sistema/admin-dashboard']); 
+    this.router.navigate(['/sistema/usuario/admin-dashboard']); 
   }
 
   public handleBackClick(): void {

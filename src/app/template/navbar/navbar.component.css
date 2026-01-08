@@ -315,7 +315,7 @@ mat-drawer-container {
   width: 100%;
   height: 100vh;
   display: flex;
-  background: var(--lm-sidebar-bg);
+  background: var(--background-sistem);
 }
 
 mat-drawer {
