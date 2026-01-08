@@ -1,115 +1,136 @@
-import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  Renderer2,
+  TemplateRef,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Router } from '@angular/router';
-
-interface MenuItem {
-  id: string;
-  label: string;
-  icon: string;
-}
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
-  onNotificationsClick() {
-    throw new Error('Method not implemented.');
-  }
-  
-  @Input() activeItem: string = '';
+export class NavbarComponent implements OnInit {
+  @ViewChild('sidebar') sidebar!: ElementRef;
+  @ViewChild('header') header!: ElementRef;
+  @ViewChild('content') content!: ElementRef;
+  @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
+  @ViewChild('dropdownToggle') dropdownToggle!: ElementRef;
+  @Input() activeItem: string = ''; 
   @Output() itemClick = new EventEmitter<string>();
-
-  constructor(private router: Router) {}
-
-  isSidebarOpen = false;
-  isMobile = false;
-  isProfileDropdownOpen = false;
   
-  userName = 'Administrador';
-  userRole = 'Administrador';
+  isSidebarOpen = false;
+  isDropdownOpen = false;
 
-  menuItems: MenuItem[] = [
-    { id: 'admin', label: 'Painel do Administrador', icon: 'user' },
-    { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },
-    { id: 'clients', label: 'Clientes', icon: 'users' },
-    { id: 'pharmacies', label: 'Farmácias', icon: 'building2' },
-    { id: 'products', label: 'Produtos & Validade', icon: 'package' },
-    { id: 'integrations', label: 'Integrações API', icon: 'plug' },
-    { id: 'reports', label: 'Relatórios', icon: 'file-text' },
-    { id: 'support', label: 'Suporte de TI', icon: 'help-circle' },
-    { id: 'settings', label: 'Configurações', icon: 'settings' }
-  ];
+  nomeUsuario: string = 'Administrador';
+  permissaoUsuario: string = 'Administrador';
+  fotoUsuario:string | null = null;
 
-  ngOnInit() {
-    this.checkScreenSize();
-    
-    this.initializeSidebarState();
+   // Mapeamento das permissões para suas descrições
+  private permissaoDescricao: { [key: string]: string } = {
+    'ADMIN': 'Administrador',
+    'PROFISSIONAL': 'Profissional',
+    'CLIENTE': 'Cliente'
+  };
+
+  constructor(
+    private router: Router,
+    private renderer: Renderer2,
+  ) {}
+
+  ngOnInit(): void {
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenSize();
+
+  ngAfterViewInit(): void {
+    if (!this.sidebar || !this.header || !this.content) {
+      console.error('Erro: Elementos da Navbar não foram encontrados');
+    }
   }
 
-  @HostListener('window:load', ['$event'])
-  onPageLoad(event: any) {
-    
-    this.initializeSidebarState();
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+
+    // if (this.sidebar && this.header && this.content) {
+    //   if (this.isSidebarOpen) {
+    //     this.renderer.addClass(this.sidebar.nativeElement, 'show-sidebar');
+    //     this.renderer.addClass(this.header.nativeElement, 'left-pd');
+    //     this.renderer.addClass(this.content.nativeElement, 'shifted');
+    //     // 🔹 Ajusta a margem dinamicamente para 280px
+    //     this.renderer.setStyle(
+    //       this.content.nativeElement,
+    //       'margin-left',
+    //       '280px'
+    //     );
+    //   } else {
+    //     this.renderer.removeClass(this.sidebar.nativeElement, 'show-sidebar');
+    //     this.renderer.removeClass(this.header.nativeElement, 'left-pd');
+    //     this.renderer.removeClass(this.content.nativeElement, 'shifted');
+    //     // 🔹 Ajusta a margem dinamicamente para 90px
+    //     this.renderer.setStyle(
+    //       this.content.nativeElement,
+    //       'margin-left',
+    //       '90px'
+    //     );
+    //   }
+    // }
   }
 
-  checkScreenSize() {
-    this.isMobile = window.innerWidth < 900;
-  }
-
-  initializeSidebarState() {
-    
-    
+  closeSidebar(): void {
     this.isSidebarOpen = false;
-    
-    
-    
-    
-  }
 
-  toggleSidebar() {
-    
-    if (this.isMobile) {
-      this.isSidebarOpen = !this.isSidebarOpen;
-    }
-    
-  }
-
-  toggleProfileDropdown(): void {
-    this.isProfileDropdownOpen = !this.isProfileDropdownOpen;
-  }
-
-  getUserInitial(): string {
-    return this.userName.charAt(0).toUpperCase();
-  }
-
-  onProfileClick(): void {
-    this.isProfileDropdownOpen = false;
-    console.log('Perfil clicado');
-  }
-
-  onLogoutClick(): void {
-    this.router.navigate(['/marketplace']);
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
-    const target = event.target as HTMLElement;
-    if (!target.closest('.user-profile') && !target.closest('.dropdown-menu')) {
-      this.isProfileDropdownOpen = false;
+    if (this.sidebar && this.header && this.content) {
+      this.renderer.removeClass(this.sidebar.nativeElement, 'show-sidebar');
+      this.renderer.removeClass(this.header.nativeElement, 'left-pd');
+      this.renderer.removeClass(this.content.nativeElement, 'shifted');
     }
   }
 
-  onItemClick(itemId: string): void {
-    this.itemClick.emit(itemId);
-    
-    if (this.isMobile) {
-      this.isSidebarOpen = false;
+
+
+  getInitial(name: string): string {
+    return name ? name.charAt(0).toUpperCase() : '?';
+  }
+
+  getRandomColor(seed: string): string {
+    const colors = [
+      '#FFB3BA', // rosa pastel
+      '#FFDFBA', // laranja pastel
+      '#BAFFC9', // verde pastel
+      '#BAE1FF', // azul pastel
+      '#D5BAFF'  // roxo pastel
+    ];
+    const index = seed ? seed.charCodeAt(0) % colors.length : 0;
+    return colors[index];
+  }
+
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    const dropdownToggle = document.getElementById('dropdown-toggle');
+    if (dropdownToggle) {
+      if (this.isDropdownOpen) {
+        dropdownToggle.classList.add('active');
+      } else {
+        dropdownToggle.classList.remove('active');
+      }
     }
   }
+
+  isActive(route: string): boolean {
+    return this.router.isActive(route, true);
+  }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
+
+
+
 }

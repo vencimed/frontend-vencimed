@@ -11,12 +11,16 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
-
+import { VisualizarClientesComponent } from './clientes/visualizar-clientes/visualizar-clientes.component';
+import { SharedModule } from '../shared/shared.module';
+import { VisualizarFarmaciasComponent } from './farmacias/visualizar-farmacias/visualizar-farmacias.component';
 @NgModule({
   declarations: [
     AdminDashboardComponent,
     FarmaciaDashboardComponent,
-    ClienteDashboardComponent
+    ClienteDashboardComponent,
+    VisualizarClientesComponent,
+    VisualizarFarmaciasComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,8 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    NgxChartsModule
+    NgxChartsModule,
+    SharedModule
 ]
 })
 export class SistemaModule { }
