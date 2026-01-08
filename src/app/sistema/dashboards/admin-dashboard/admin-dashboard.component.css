@@ -14,13 +14,13 @@
 .admin-dashboard {
   display: flex;
   min-height: 100vh;
-  background-color: var(--vcm-gray-50);
+  background-color: var(--background-sistem);
 }
 
 .main-content {
   flex: 1;
   transition: margin-left 0.4s;
-  background-color: var(--vcm-gray-50);
+  background-color: var(--background-sistem);
   min-height: 100vh;
   margin: 7.5rem 2rem; 
 }
