@@ -1,61 +1,96 @@
-<header class="header" [class.left-pd]="isSidebarOpen">
-  <div class="header-container">
-    <div class="header-left">
+<!-- HEADER -->
+<div #header class="header" id="header" [class.sidebar-open]="isSidebarOpen" [class.left-pd]="isSidebarOpen">
+    <div class="header-container">
       <button (click)="toggleSidebar()" class="header-toggle" id="header-toggle">
-        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+          <lucide-icon name="menu" [size]="26"></lucide-icon>
       </button>
-      <h1 class="page-title">Dashboard</h1>
-    </div>
+      
+      <div class="header-user">
 
-    <div class="header-right">
-      <button class="icon-btn" (click)="onNotificationsClick()">
-        <img src="/assets/icones/Bell.svg" alt="Perfil" class="icon-notifications"/>
-      </button>
+        <div class="usuario">
+          <img src="assets/imagens/user-photo.png" *ngIf="fotoUsuario; else fallbackPhoto" alt="User Photo" class="user-photo" />
 
-
-      <button class="icon-btn" (click)="onProfileClick()">
-        <img src="/assets/icones/profile.svg" alt="Perfil" class="icon-profile"/>
-      </button>
-
-      <div class="user-info-compact">
-        <span class="user-name">{{userName}}</span>
-        <span class="user-role">{{userRole}}</span>
-      </div>
-      <button class="logout-btn" (click)="onLogoutClick()">
-        Sair
-      </button>
-    </div>
-  </div>
-</header>
-
-<aside class="navbar" [class.show-sidebar]="isSidebarOpen">
-  <div class="navbar-container">
-    <div class="navbar-content">
-      <h2 class="logo">VenciMed</h2>
-
-      <nav class="nav">
-        <button
-          *ngFor="let item of menuItems"
-          (click)="onItemClick(item.id)"
-          [class.active]="item.id === activeItem"
-          class="nav-item"
-        >
-          <div [class]="'nav-icon icon-' + item.icon"></div>
-          <span class="label">{{ item.label }}</span>
+          <ng-template #fallbackPhoto>
+            <div
+              class="user-initial"
+              [style.background-color]="getRandomColor(nomeUsuario)"
+            >
+              {{ getInitial(nomeUsuario) }}
+            </div>
+          </ng-template>
+          
+          
+          <div class="user-info">
+            <h3 class="user-name">{{ nomeUsuario }}</h3>
+            <span class="user-cargo">{{ permissaoUsuario }}</span>
+          </div>
+        </div>
+        <button #dropdownToggle (click)="toggleDropdown()" class="dropdown-toggle" id="dropdown-toggle">
+          <lucide-icon name="chevron-down" [size]="26"></lucide-icon>
         </button>
-      </nav>
+        <div class="dropdown-menu" id="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
+          <!-- <button  class="dropdown-item">Minha Conta</button> -->
+          <button class="dropdown-item" (click)="logout()">Sair</button>
+        </div>
+      </div>
     </div>
   </div>
-</aside>
 
-<div class="overlay" [class.show]="isSidebarOpen" (click)="toggleSidebar()"></div>
+  <mat-drawer-container>
+  <!-- SIDEBAR -->
+  <mat-drawer #sidebar class="sidebar" id="sidebar" mode="side" opened [class.show-sidebar]="isSidebarOpen">
+    <div class="sidebar-container">
+      <div class="sidebar-logo">
+        <div class="sidebar-img">
+          <img src="/assets/icones/logo-vencimed.png" alt="image" />
+        </div>
 
-<main class="main-content" [class.shifted]="isSidebarOpen">
-  <div class="content-area">
-    <router-outlet></router-outlet>
-  </div>
-</main>
+        <div class="sidebar-info">
+            <img src="assets/icones/vencimed-tipografia 2.svg" alt="image" />
+        </div>
+      </div>
+
+      <mat-nav-list class="sidebar-content">
+        <div>
+          <!-- <h3 class="sidebar-title">Home</h3> -->
+
+          <div class="sidebar-list">
+            <a routerLink="/sistema/admin-dashboard" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/admin-dashboard')}">
+              <img src="assets/icones/dashboard-icon.svg" alt="home icon" />
+              <span>Dashboard</span>
+            </a>
+
+            <a routerLink="/sistema/visualizar-clientes" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/visualizar-clientes')}">
+              <img src="assets/icones/clientes-icon.svg" alt="home icon" />
+              <span>Clientes</span>
+            </a>
+
+            <a routerLink="/sistema/visualizar-farmacias" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/visualizar-farmacias')}">
+              <img src="assets/icones/farmacias-icon.svg" alt="home icon" />
+              <span>Farmácias</span>
+            </a>
+          </div>
+        </div>
+       
+
+        <!-- <div>
+            <h3 class="sidebar-title">Funcionalidades</h3>
+  
+            <div class="sidebar-list">
+              <a routerLink="/usuario/servicos" class="sidebar-link" [ngClass]="{'active-link': isActive('/usuario/servicos')}">
+                <img src="assets/icones/servicos-icon.svg" alt="home icon" />
+                <span>Serviços</span>
+              </a>
+
+            </div>
+        </div> -->
+      </mat-nav-list>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content #content class="drawer-content" [class.shifted]="isSidebarOpen">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

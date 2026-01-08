@@ -19,11 +19,10 @@
 
 .main-content {
   flex: 1;
-  margin-left: 256px;
   transition: margin-left 0.4s;
   background-color: var(--vcm-gray-50);
   min-height: 100vh;
-  padding-top: 70px; 
+  margin: 7.5rem 2rem; 
 }
 
 .main-content.shifted {
@@ -31,10 +30,6 @@
   padding-top: 70px; 
 }
 
-.dashboard-content {
-  padding: 2rem;
-
-}
 
 @media screen and (max-width: 899px) {
   .main-content {

@@ -1,0 +1,179 @@
+<div class="visualizar-clientes">
+  <app-navbar></app-navbar>
+
+  <div class="main-content">
+    <div class="clients-page">
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">Clientes</h1>
+
+        <div class="header-actions">
+          <button type="button" class="btn-outline" (click)="onExportar()">
+            Exportar
+          </button>
+
+          <button type="button" class="btn-primary" (click)="onCadastrarCliente()">
+            Cadastrar cliente
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="card filters-card">
+        <div class="filters-grid">
+          <div class="field">
+            <label>Gênero</label>
+            <select (change)="onGeneroChange($event)">
+              <option value="">Todos os gêneros</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Faixa etária</label>
+            <select (change)="onFaixaEtariaChange($event)">
+              <option value="">Todas as faixas etárias</option>
+              <option value="0-17">0–17</option>
+              <option value="18-24">18–24</option>
+              <option value="25-34">25–34</option>
+              <option value="35-44">35–44</option>
+              <option value="45-59">45–59</option>
+              <option value="60+">60+</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Estado</label>
+            <select (change)="onEstadoChange($event)">
+              <option value="">Todos os estados</option>
+              <option value="CE">CE</option>
+              <option value="SP">SP</option>
+              <option value="RJ">RJ</option>
+              <option value="MG">MG</option>
+              <option value="BA">BA</option>
+            </select>
+          </div>
+
+          <div class="field search-field">
+            <label>&nbsp;</label>
+            <div class="search">
+              <input
+                type="text"
+                placeholder="Buscar clientes"
+                (input)="onSearchChange($event)"
+              />
+
+              <span class="search-icon" aria-hidden="true">
+                <!-- lupa -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="m21 21-4.3-4.3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="card table-card">
+        <div class="table-wrapper">
+          <table class="clients-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Data de nascimento</th>
+                <th>Gênero</th>
+                <th class="col-actions">Ações</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let c of clientesPaginados; trackBy: trackById">
+                <td class="td-link">{{ c.nome }}</td>
+                <td>{{ c.cpf }}</td>
+                <td class="td-muted">{{ c.email }}</td>
+                <td>{{ c.dataNascimento }}</td>
+                <td>{{ c.genero }}</td>
+
+                <td class="actions-cell">
+                  <div class="actions">
+                    <button
+                      type="button"
+                      class="actions-btn"
+                      (click)="toggleMenu(c.id, $event)"
+                      aria-label="Abrir ações"
+                    >
+                      <img src="/assets/icones/menu-kebab.svg" alt="menu">
+                    </button>
+
+                    <!-- Mini modal -->
+                    <div
+                      class="row-menu"
+                      *ngIf="menuAbertoId === c.id"
+                      (click)="$event.stopPropagation()"
+                    >
+                      <button type="button" class="menu-item" (click)="onVerDetalhes(c)">
+                        <span class="mi-icon" aria-hidden="true">
+                          <img src="/assets/icones/olho.svg" alt="menu">
+                        </span>
+                        <span>Ver detalhes</span>
+                      </button>
+
+                      <button type="button" class="menu-item" (click)="onEditar(c)">
+                        <span class="mi-icon" aria-hidden="true">
+                          <img src="/assets/icones/lapis.svg" alt="menu">
+
+                        </span>
+                        <span>Editar</span>
+                      </button>
+
+                      <button type="button" class="menu-item danger" (click)="onExcluir(c)">
+                        <span class="mi-icon" aria-hidden="true">
+                          <img src="/assets/icones/lixeira.svg" alt="menu">
+                        </span>
+                        <span>Excluir</span>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr *ngIf="clientesPaginados.length === 0">
+                <td colspan="6" class="empty">
+                  Nenhum cliente encontrado com os filtros atuais.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Footer (paginação) -->
+        <div class="table-footer">
+          <app-pagination
+            [paginaAtual]="paginaAtual"
+            [totalItens]="totalItens"
+            [itensPorPagina]="itensPorPagina"
+            (paginaMudou)="onPaginaMudou($event)"
+          ></app-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
