@@ -1,0 +1,75 @@
+<div class="modal-cep" role="dialog" aria-modal="true">
+  <div class="modal-cep-backdrop" (click)="onModalClose()"></div>
+
+  <div class="modal-cep-wrapper" role="document">
+    
+    <div class="vcm-cep-modal">
+      <button class="modal-cep-close" type="button" (click)="onModalClose()" aria-label="Fechar">
+        &times;
+      </button>
+      <div class="vcm-cep-header">
+        <p class="vcm-cep-welcome">Olá! Seja bem-vindo(a) a</p>
+
+        <img
+          src="/assets/icones/Logo-vencimed.svg"
+          alt="logo VenciMed"
+          class="vcm-cep-logo"
+        />
+      </div>
+
+      <div class="vcm-cep-body">
+        <h3 class="vcm-cep-title">Onde você está?</h3>
+        <p class="vcm-cep-subtitle">
+          Digite seu CEP para ter acesso aos produtos e ofertas da sua região.
+        </p>
+
+        <div class="vcm-cep-form">
+          <input
+            type="text"
+            inputmode="numeric"
+            maxlength="9"
+            placeholder="Digite seu CEP"
+            class="vcm-cep-input"
+            [value]="cepValue"
+            (input)="onCepInput($event)"
+          />
+
+          <button
+            type="button"
+            class="vcm-cep-button"
+            (click)="onVerifyCep()"
+          >
+            Verificar
+          </button>
+        </div>
+
+        <p *ngIf="error" class="vcm-cep-error">{{ error }}</p>
+
+        <a
+          class="vcm-cep-link"
+          href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+          target="_blank"
+          rel="noopener"
+        >
+          Não sei meu CEP
+        </a>
+
+        <p class="vcm-cep-hint">
+          *Preço e estoque podem variar de acordo com a região
+        </p>
+
+        <div class="vcm-cep-divider"><span>ou</span></div>
+
+        <button type="button" class="vcm-cep-geo">
+          <lucide-icon name="map-pin" [size]="18" aria-hidden="true"></lucide-icon>
+          Use sua localização atual
+        </button>
+
+        <p class="vcm-cep-privacy">
+          Para saber o que fazemos com seus dados,
+          <a href="#" (click)="$event.preventDefault()">clique aqui</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

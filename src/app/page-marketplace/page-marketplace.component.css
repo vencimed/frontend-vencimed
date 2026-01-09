@@ -480,15 +480,12 @@
 }
 
 .whatsapp-doctor {
-  /* --- ALTERAÇÕES AQUI --- */
   position: absolute;
   bottom: 0;          
   right: 3rem;        
-  
   height: 120%;       
   width: auto;        
-  max-width: 400  px;  
-  
+  max-width: 400px;  
   object-fit: contain;
   transform: none;    
   z-index: 10;        

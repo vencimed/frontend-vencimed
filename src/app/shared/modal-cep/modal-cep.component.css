@@ -1,0 +1,198 @@
+/* Overlay do modal */
+.modal-cep {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal-cep-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.modal-cep-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+/* Botão fechar */
+.modal-cep-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0,0,0,0.18);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.modal-cep-close:hover {
+  background: rgba(0,0,0,0.28);
+}
+
+/* Seu layout do card */
+.vcm-cep-modal{
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15,23,42,0.25);
+}
+
+.vcm-cep-header{
+  background: var(--vcm-bg-primary);
+  padding: 28px 22px 22px;
+  text-align: center;
+}
+
+.vcm-cep-welcome{
+  margin: 0 0 12px;
+  color: rgba(255,255,255,.92);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.vcm-cep-logo{
+  height: 54px;
+  width: auto;
+}
+
+.vcm-cep-body{
+  background: #fff;
+  padding: 22px 22px 18px;
+}
+
+.vcm-cep-title{
+  margin: 0 0 6px;
+  color: var(--vcm-gray-900);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.vcm-cep-subtitle{
+  margin: 0 0 14px;
+  color: var(--vcm-gray-600);
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.vcm-cep-form{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.vcm-cep-input{
+  flex: 1;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid var(--vcm-gray-200);
+  background: var(--vcm-gray-50);
+  padding: 0 14px;
+  outline: none;
+}
+
+.vcm-cep-input:focus{
+  box-shadow: 0 0 0 2px rgba(36, 127, 120, 0.20);
+  border-color: var(--vcm-green-primary);
+}
+
+.vcm-cep-button{
+  height: 46px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--vcm-green-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.vcm-cep-button:hover{
+  background: var(--vcm-green-secondary);
+}
+
+.vcm-cep-error{
+  margin: 10px 0 0;
+  color: var(--vcm-error-500);
+  font-size: 13px;
+}
+
+.vcm-cep-link{
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--vcm-green-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.vcm-cep-hint{
+  margin: 10px 0 12px;
+  color: var(--vcm-gray-500);
+  font-size: 12px;
+}
+
+.vcm-cep-divider{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 12px;
+  color: var(--vcm-gray-400);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.vcm-cep-divider::before,
+.vcm-cep-divider::after{
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--vcm-gray-200);
+}
+
+.vcm-cep-geo{
+  width: 100%;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid var(--vcm-gray-200);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--vcm-gray-700);
+}
+
+.vcm-cep-geo:hover{
+  border-color: var(--vcm-green-primary);
+}
+
+.vcm-cep-privacy{
+  margin: 14px 0 0;
+  color: var(--vcm-gray-500);
+  font-size: 12px;
+  text-align: center;
+}
+
+.vcm-cep-privacy a{
+  color: var(--vcm-green-primary);
+  font-weight: 700;
+  text-decoration: underline;
+}
