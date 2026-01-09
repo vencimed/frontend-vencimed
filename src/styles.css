@@ -60,6 +60,7 @@
   --vcm-text-2: #286CA8;
  
   --background: #ffffff;
+  --background-sistem: #E4E5EB;
   --foreground: var(--vcm-gray-900);
   --card: #ffffff;
   --card-foreground: var(--vcm-gray-900);

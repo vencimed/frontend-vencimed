@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CartService, Product } from '../core/services/cart.service'; 
+import { ModalGenericoService } from '../core/services/modal-generico.service';
+import { ModalCepService } from '../core/services/modal-cep.service';
+
+const VCM_CEP_MODAL_SHOWN_KEY = 'vcm_cep_modal_shown';
 
 @Component({
   selector: 'app-page-marketplace',
@@ -61,7 +65,12 @@ export class PageMarketplaceComponent implements OnInit {
   public skinCareProducts: Product[] = [];  
   public personalCareProducts: Product[] = [];
 
-  constructor(private cartService: CartService) { }
+  public cepError: string | null = null;
+
+  constructor(
+    private cartService: CartService,
+    private modalCepService: ModalCepService
+  ) { }
 
   ngOnInit(): void {
     this.allProducts = this.cartService.getProducts();
@@ -90,6 +99,24 @@ export class PageMarketplaceComponent implements OnInit {
       PERSONAL_CARE_IDS.includes(p.id)
     );
   }
+
+  ngAfterViewInit(): void {
+    const alreadyShown = localStorage.getItem(VCM_CEP_MODAL_SHOWN_KEY) === '1';
+
+    // Mostra só 1x (e só se ainda não tiver CEP salvo)
+    if (!alreadyShown) {
+      localStorage.setItem(VCM_CEP_MODAL_SHOWN_KEY, '1');
+
+      // evita dor de cabeça com ciclo de detecção
+      setTimeout(() => this.openCepModal(), 0);
+    }
+  }
+
+
+  openCepModal(): void {
+    this.modalCepService.open();
+  }
+
 
   public get filteredProducts(): Product[] {
     if (this.selectedCategory) {

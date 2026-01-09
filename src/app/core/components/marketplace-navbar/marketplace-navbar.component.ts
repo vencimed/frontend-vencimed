@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
+import { ModalGenericoService } from '../../services/modal-generico.service';
+import { ModalCepService } from '../../services/modal-cep.service';
 
 @Component({
   selector: 'app-marketplace-navbar', 
@@ -8,13 +10,17 @@ import { CartService } from 'src/app/core/services/cart.service';
   styleUrls: ['./marketplace-navbar.component.css']
 })
 export class MarketplaceNavbarComponent implements OnInit {
-
+  openModalCep: boolean = false;
+  @ViewChild('cepModalTemplate') cepModalTemplate!: TemplateRef<any>;
+  
 
   public cartItemCount$!: Observable<number>;
   public subTotal$!: Observable<number>;
   public isSidebarOpen: boolean = false;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private modalCepService: ModalCepService
+  ) { }
 
   ngOnInit(): void {
 
@@ -22,6 +28,10 @@ export class MarketplaceNavbarComponent implements OnInit {
     this.subTotal$ = this.cartService.getSubtotal();
   }
 
+
+  openCepModal(): void {
+    this.modalCepService.open();
+  }
  
   onCartClick(): void {
     this.cartService.toggleCart(true); 

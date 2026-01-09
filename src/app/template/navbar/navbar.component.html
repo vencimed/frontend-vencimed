@@ -55,17 +55,17 @@
           <!-- <h3 class="sidebar-title">Home</h3> -->
 
           <div class="sidebar-list">
-            <a routerLink="/sistema/admin-dashboard" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/admin-dashboard')}">
+            <a routerLink="/sistema/usuario/admin-dashboard" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/usuario/admin-dashboard')}">
               <img src="assets/icones/dashboard-icon.svg" alt="home icon" />
               <span>Dashboard</span>
             </a>
 
-            <a routerLink="/sistema/visualizar-clientes" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/visualizar-clientes')}">
+            <a routerLink="/sistema/usuario/visualizar-clientes" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/usuario/visualizar-clientes')}">
               <img src="assets/icones/clientes-icon.svg" alt="home icon" />
               <span>Clientes</span>
             </a>
 
-            <a routerLink="/sistema/visualizar-farmacias" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/visualizar-farmacias')}">
+            <a routerLink="/sistema/usuario/visualizar-farmacias" class="sidebar-link" [ngClass]="{'active-link': isActive('/sistema/usuario/visualizar-farmacias')}">
               <img src="assets/icones/farmacias-icon.svg" alt="home icon" />
               <span>Farmácias</span>
             </a>
@@ -90,7 +90,7 @@
 
   <mat-drawer-content #content class="drawer-content" [class.shifted]="isSidebarOpen">
     <div>
-      <router-outlet></router-outlet>
+      <ng-content></ng-content>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

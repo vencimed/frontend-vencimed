@@ -35,6 +35,7 @@ import { ProductCarouselComponent } from './core/components/product-carousel/pro
 import { CadastroComponent } from './cadastro/cadastro.component'; 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { LayoutSistemComponent } from './layout-sistem/layout-sistem.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -53,10 +54,10 @@ registerLocaleData(localePt);
     MetricCardComponent,
     ProductCarouselComponent,
     CadastroComponent,
+    LayoutSistemComponent,
   ],
   
   imports: [
-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

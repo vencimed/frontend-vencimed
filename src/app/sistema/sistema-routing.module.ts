@@ -6,10 +6,9 @@ import { ClienteDashboardComponent } from './dashboards/cliente-dashboard/client
 import { AdminDashboardComponent } from './dashboards/admin-dashboard/admin-dashboard.component';
 import { VisualizarClientesComponent } from './clientes/visualizar-clientes/visualizar-clientes.component';
 import { VisualizarFarmaciasComponent } from './farmacias/visualizar-farmacias/visualizar-farmacias.component';
-
 const routes: Routes = [
   {
-    path: '',
+    path: 'usuario',
     children: [
       { path: 'admin-dashboard', component: AdminDashboardComponent },
 
@@ -19,12 +18,8 @@ const routes: Routes = [
       //Farmácias
       { path: 'visualizar-farmacias', component: VisualizarFarmaciasComponent},
 
-      { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' }, 
-      { path: '**', redirectTo: 'admin-dashboard' },
     ]
-  },
-  { path: 'admin-dashboard', component: AdminDashboardComponent }
-
+  }
 ];
 
 @NgModule({
